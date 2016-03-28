@@ -20,16 +20,17 @@ public class LoginView extends Frame {
 
     public LoginView() throws HeadlessException {
         super("Staff System");
-        this.setSize(500, 300);
-        this.setLocation(100, 100);
         initView();
     }
 
     private void initView() {
+        this.setSize(500, 300);
+        this.setLocation(100, 100);
         JPanel aPanel = new JPanel(new BorderLayout());
         JPanel topPanel = new JPanel();
         topPanel.add(new JLabel("Login"));
         aPanel.add(topPanel, BorderLayout.NORTH);
+
         JPanel centerPanel = new JPanel(new GridLayout(8, 3, 5, 10));
         for (int i = 0; i < 6; i++) {
             centerPanel.add(new JPanel());
@@ -38,20 +39,21 @@ public class LoginView extends Frame {
         final JTextField usernameTextField = new JTextField("", 20);
         centerPanel.add(usernameTextField);
         centerPanel.add(new JPanel());
+
         centerPanel.add(new JLabel("Password", SwingConstants.RIGHT));
         final JTextField passwordTextField = new JTextField("", 20);
         centerPanel.add(passwordTextField);
         centerPanel.add(new JPanel());
+
         centerPanel.add(new JPanel());
         JButton button = new JButton("Login");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loginProcess = new LoginProcess();
-                if (loginProcess.check(usernameTextField.getText(), passwordTextField.getText())) {
-                    JOptionPane.showMessageDialog(LoginView.this, "Hello " + usernameTextField.getText());
-                } else {
-                    JOptionPane.showMessageDialog(LoginView.this, "Wrong username or password!");
+                boolean personnel=loginProcess.check(usernameTextField.getText(), passwordTextField.getText());
+                if (!personnel) {
+                    JOptionPane.showMessageDialog(LoginView.this, "Wrong staff id or password!");
                 }
             }
         });
@@ -61,7 +63,6 @@ public class LoginView extends Frame {
             centerPanel.add(new JPanel());
         }
         aPanel.add(centerPanel, BorderLayout.CENTER);
-
         this.add(aPanel);
         this.setVisible(true);
     }

@@ -12,8 +12,9 @@ public class MyMainProcess {
 
 
     public static void main(String[] arg) {
-        LoginView login = new LoginView();
         init();
+        LoginView login = new LoginView();
+
     }
 
     private static void init() {

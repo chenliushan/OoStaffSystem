@@ -1,5 +1,6 @@
 package process;
 
+import Data.CommonConstant;
 import Data.RuntimeData;
 import exception.DuplicatedException;
 import exception.IllegalOperationException;
@@ -30,7 +31,7 @@ public class PersonnelProcess {
         createHrStaff(RuntimeData.HrInfo.NAME, RuntimeData.HrInfo.PASSWORD, RuntimeData.HrInfo.SALARY);
     }
 
-    public int getNextPersonnelId() throws UninitializedException {
+    private static int getNextPersonnelId() throws UninitializedException {
         if (PERSONNEL_LIST != null) {
             return PERSONNEL_LIST.size() + 1;
         } else {
@@ -38,7 +39,7 @@ public class PersonnelProcess {
         }
     }
 
-    public int addPersonnel(Personnel p) throws DuplicatedException, IllegalOperationException, UninitializedException {
+    public static int addPersonnel(Personnel p) throws DuplicatedException, IllegalOperationException, UninitializedException {
         int id = -1;
         if (p != null) {
             int pid = p.getId();
@@ -46,7 +47,7 @@ public class PersonnelProcess {
                 if (PERSONNEL_LIST.get(pid).equals(p)) {
                     throw new IllegalOperationException("the same personnel has exist! p:" + p.toString());
                 }
-            } else {
+            } else if (pid == -1) {
                 id = getNextPersonnelId();
                 p.setId(id);
                 if (p.getClass().getName() == Staff.class.getName()) {
@@ -79,6 +80,22 @@ public class PersonnelProcess {
         throw new IllegalOperationException("addPersonnel() p=" + p.toString());
     }
 
+    public static boolean assignSupervisor(int newStaffId, int spid) {
+        if (newStaffId != spid && newStaffId <= PERSONNEL_LIST.size() && spid <= PERSONNEL_LIST.size()) {
+            try {
+                if (searchById(spid) != null) {
+                    Staff staff = (Staff) searchById(newStaffId);
+                    staff.setSupervisorId(spid);
+                    PERSONNEL_LIST.set(newStaffId - 1, staff);
+                    return true;
+                }
+            } catch (IllegalOperationException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
     public void deletePersonnel(Personnel p) throws IllegalOperationException {
         if (p != null && NUM_OF_NORMAL_STAFF > 2) {
             if (p.getClass().getName() == Staff.class.getName()) {
@@ -99,7 +116,7 @@ public class PersonnelProcess {
             logger.warn("searchById( ID is lager than list size)");
             return null;
         }
-        Personnel personnel = PERSONNEL_LIST.get(id-1);
+        Personnel personnel = PERSONNEL_LIST.get(id - 1);
         if (personnel.getId() == id) {
             return personnel;
         } else {
@@ -130,10 +147,10 @@ public class PersonnelProcess {
     }
 
     private void createHrStaff(String name, String password, double salary) {
-        if (!HAS_HR) {
+        if (!HAS_HR && HAS_DIRECTOR) {
             try {
                 HrStaff hrStaff = new HrStaff(name, password, salary);
-                addPersonnel(hrStaff);
+                assignSupervisor(addPersonnel(hrStaff), CommonConstant.DIRECTOR_ID);
             } catch (UninitializedException e) {
                 e.printStackTrace();
             } catch (IllegalOperationException e) {
@@ -144,6 +161,11 @@ public class PersonnelProcess {
         } else {
             logger.warn("HR has exist");
         }
+    }
+
+    public static String  printInfo() {
+        logger.info("PERSONNEL_LIST:" + PERSONNEL_LIST);
+        return PERSONNEL_LIST.toString();
     }
 
 }
