@@ -18,8 +18,12 @@ public class MyMainProcess {
     }
 
     private static void init() {
-        RuntimeData.leavingApplicationList = new ArrayList<LeavingApplication>();
-        PersonnelProcess personnelProcess = PersonnelProcess.getInstance();
+
     }
+    /**
+     * the delete staff should be treat carefully, since the staff might be someone else's supervisor.
+     * forbidden to delete someone who is a supervisor
+     * or resign new supervisor to the related staff
+     */
 
 }

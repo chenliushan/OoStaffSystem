@@ -22,4 +22,5 @@ public class Director extends Personnel {
     public boolean HandleLeaveApplication(boolean decision) {
         return false;
     }
+
 }

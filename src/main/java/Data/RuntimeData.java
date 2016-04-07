@@ -12,7 +12,6 @@ public class RuntimeData {
     //    public static int NumOfApplication;
 
 
-    public static List<LeavingApplication> leavingApplicationList = null;
 
     public static class DirectorInfo{
         public static String NAME = "Jana";

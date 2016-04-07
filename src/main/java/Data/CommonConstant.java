@@ -21,7 +21,8 @@ public  class CommonConstant {
        public static final String WELCOME = "Welcome :";
        public static final String PROGRAM_NAME = "Staff System";
 
-       public static final String SUBMIT = "SUBMIT!" ;
+       public static final String SUBMIT = "SUBMIT" ;
+       public static final String CONFIRMATION = "CONFIRMATION" ;
        public static final String SUCCESS = "Operation success!" ;
        public static final String OPERATION_FAILED  = "Operation failed!";
 
@@ -35,7 +36,10 @@ public  class CommonConstant {
        public static final String ALL_STAFF_IS = "Here is all the staff information in the system:" ;
        public static final String HANDEL_REQUEST = "Handel request";
        public static final String DELETE_A_STAFF = "Delete a staff";
+       public static final String DELETE_BY_ID = "By staff ID: ";
+       public static final String DELETE_CONFIRMATION = "Do you really want to delete the staff: \n";
        public static final String STAFF_INFO = "Staff information:";
+       public static final String STAFF_NOT_FOUND = "Staff not found:";
 
        public static final String CREATE_NEW_STAFF = "Create new staff";
        public static final String ASSIGN_A_SUPERVISOR = "Assign a Supervisor";

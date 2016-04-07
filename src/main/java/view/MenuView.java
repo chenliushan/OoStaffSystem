@@ -26,7 +26,7 @@ public class MenuView extends JFrame {
         this.setLocation(100, 100);
         JPanel aPanel = new JPanel(new BorderLayout());
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel(CommonConstant.Messages.WELCOME+ personnel.getName() + "."));
+        topPanel.add(new JLabel(CommonConstant.Messages.WELCOME + personnel.getName() + "."));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel(new GridLayout(8, 3, 5, 10));
@@ -90,7 +90,7 @@ public class MenuView extends JFrame {
             deleteBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    new DeleteAStaffView(personnel);
                 }
             });
             centerPanel.add(deleteBtn);

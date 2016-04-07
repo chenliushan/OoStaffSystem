@@ -15,7 +15,7 @@ public class HrStaff extends Staff implements Hr {
     }
 
     public int createStaff(String name, String password, double salary) {
-        Staff staff=new Staff(name, password, salary);
+        Staff staff = new Staff(name, password, salary);
 
         try {
             return PersonnelProcess.getInstance().addPersonnel(staff);
@@ -23,19 +23,23 @@ public class HrStaff extends Staff implements Hr {
             e.printStackTrace();
         } catch (IllegalOperationException e) {
             e.printStackTrace();
-        } catch (UninitializedException e) {
-            e.printStackTrace();
         }
         return staff.getId();
     }
 
     @Override
     public boolean assignSupervisor(int newStaffId, int spid) {
-        return  PersonnelProcess.getInstance().assignSupervisor(newStaffId,spid);
+        return PersonnelProcess.getInstance().assignSupervisor(newStaffId, spid);
     }
 
-    public boolean deleteStaff() {
+    public boolean deleteStaff(Personnel staff) {
+        PersonnelProcess.getInstance().deletePersonnel(staff);
         return false;
+    }
+
+    @Override
+    public Personnel viewStaffInfo(int sid) {
+        return PersonnelProcess.getInstance().searchById(sid);
     }
 
 }

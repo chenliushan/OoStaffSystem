@@ -27,7 +27,6 @@ public class AssignSupervisorView extends JFrame {
         this.newStaffId = newStaffId;
         this.thisFrame = this;
         initView();
-        PersonnelProcess.printInfo();
     }
 
     private void initView() {
@@ -39,18 +38,16 @@ public class AssignSupervisorView extends JFrame {
         topPanel.add(new JLabel(CommonConstant.Messages.CREATE_NEW_STAFF+" "+CommonConstant.Messages.SUCCESS));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
-
-        JPanel upPanel = new JPanel();
-        JLabel label=new JLabel(Staff.StaffStr.SUPERVISOR+" "+ Personnel.PersonnelStr.ID + newStaffId);
-        label.setForeground(Color.red);
-        upPanel.add(label);
-        aPanel.add(upPanel, BorderLayout.CENTER);
-
-        JPanel centerPanel = new JPanel(new GridLayout(8, 3, 5, 10));
+        JPanel centerPanel = new JPanel(new GridLayout(9, 3, 5, 10));
 
         for (int i = 0; i < 3; i++) {
             centerPanel.add(new JPanel());
         }
+        centerPanel.add(new JPanel());
+        JLabel label=new JLabel(Personnel.PersonnelStr.ID +": "+ newStaffId);
+        label.setForeground(Color.red);
+        centerPanel.add(label);
+        centerPanel.add(new JPanel());
 
         centerPanel.add(new JPanel());
         centerPanel.add(new JLabel(CommonConstant.Messages.ASSIGN_A_SUPERVISOR));
@@ -79,7 +76,7 @@ public class AssignSupervisorView extends JFrame {
                         return;
                     }
                 }
-                JOptionPane.showMessageDialog(AssignSupervisorView.this, CommonConstant.Messages.ILLEGAL_INPUT);
+                JOptionPane.showMessageDialog(AssignSupervisorView.this, CommonConstant.Messages.STAFF_NOT_FOUND);
             }
         });
         centerPanel.add(handelBtn);
