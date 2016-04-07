@@ -37,4 +37,5 @@ public class HrStaff extends Staff implements Hr {
     public boolean deleteStaff() {
         return false;
     }
+
 }

@@ -18,6 +18,10 @@ import java.util.List;
 /**
  * Created by liushanchen on 16/3/28.
  */
+
+/**
+ * Should change to Singleton design patten
+ */
 public class PersonnelProcess {
     private static Logger logger = LogManager.getLogger(Personnel.class.getName());
     private static List<Personnel> PERSONNEL_LIST = null;

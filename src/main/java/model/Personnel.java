@@ -78,4 +78,12 @@ public abstract class Personnel {
                 '}' + "\n";
 
     }
+    public static class PersonnelStr{
+        public static final String ID = "Staff Id";
+        public static final String NAME = "Staff Name";
+        public static final String SALARY = "Staff Salary";
+        public static final String PASSWORD = "Password";
+        public static final String TITLE = "Staff Title";
+
+    }
 }

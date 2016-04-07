@@ -7,14 +7,18 @@ import Data.CommonConstant;
  */
 public class Staff extends Personnel {
 
+    int supervisorId;
+
+
     public Staff(String name, String password, double salary) {
         super(name, password, salary, CommonConstant.STAFF_TITLE);
     }
-    public Staff(String name, String password, double salary,String title) {
+
+    public Staff(String name, String password, double salary, String title) {
         super(name, password, salary, title);
     }
 
-    int supervisorId;
+
 
     public int getSupervisorId() {
         return supervisorId;
@@ -42,6 +46,10 @@ public class Staff extends Personnel {
                 ", password='" + super.getPassword() + '\'' +
                 ", title='" + super.getTitle() + '\'' +
                 ", supervisorId=" + supervisorId +
-                '}'+"\n";
+                '}' + "\n";
+    }
+    public static class StaffStr{
+        public static final String SUPERVISOR = "Supervisor";
+
     }
 }

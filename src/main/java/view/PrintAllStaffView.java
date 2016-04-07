@@ -1,5 +1,6 @@
 package view;
 
+import Data.CommonConstant;
 import model.Director;
 import model.HrStaff;
 import model.Personnel;
@@ -11,6 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  * Created by liushanchen on 16/3/28.
  */
@@ -20,7 +22,7 @@ public class PrintAllStaffView extends JFrame {
     private JFrame thisFrame;
 
     public PrintAllStaffView(Personnel personnel) throws HeadlessException {
-        super("Personnel");
+        super(CommonConstant.Messages.SHOW_ALL_STAFF);
         this.director = (Director) personnel;
         this.thisFrame = this;
         initView();
@@ -33,7 +35,7 @@ public class PrintAllStaffView extends JFrame {
         JPanel aPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel("Here is all the staff information in the system:" ));
+        topPanel.add(new JLabel(CommonConstant.Messages.ALL_STAFF_IS));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel();

@@ -19,7 +19,7 @@ public class CreateStaffView extends JFrame {
     JFrame thisFrame;
 
     public CreateStaffView(Personnel personnel) throws HeadlessException {
-        super("Create Staff");
+        super(CommonConstant.Messages.CREATE_NEW_STAFF);
         this.hrStaff = (HrStaff) personnel;
         thisFrame=this;
         initView();
@@ -31,7 +31,7 @@ public class CreateStaffView extends JFrame {
         this.setLocation(100, 100);
         JPanel aPanel = new JPanel(new BorderLayout());
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel("Please fill the staff information:"));
+        topPanel.add(new JLabel(CommonConstant.Messages.STAFF_INFO));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel(new GridLayout(8, 3, 5, 10));
@@ -40,23 +40,23 @@ public class CreateStaffView extends JFrame {
             centerPanel.add(new JPanel());
         }
 
-        centerPanel.add(new JLabel("Staff Name", SwingConstants.RIGHT));
+        centerPanel.add(new JLabel(Personnel.PersonnelStr.NAME, SwingConstants.RIGHT));
         final JTextField nameTextField = new JTextField("", 20);
         centerPanel.add(nameTextField);
         centerPanel.add(new JPanel());
 
-        centerPanel.add(new JLabel("Password", SwingConstants.RIGHT));
+        centerPanel.add(new JLabel(Personnel.PersonnelStr.PASSWORD, SwingConstants.RIGHT));
         final JTextField passwordTextField = new JTextField("", 20);
         centerPanel.add(passwordTextField);
         centerPanel.add(new JPanel());
 
-        centerPanel.add(new JLabel("Salary", SwingConstants.RIGHT));
+        centerPanel.add(new JLabel(Personnel.PersonnelStr.SALARY, SwingConstants.RIGHT));
         final JTextField salaryTextField = new JTextField("", 20);
         centerPanel.add(salaryTextField);
         centerPanel.add(new JPanel());
 
         centerPanel.add(new JPanel());
-        JButton handelBtn = new JButton("Create");
+        JButton handelBtn = new JButton(CommonConstant.Messages.CREATE_NEW_STAFF);
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,7 +65,7 @@ public class CreateStaffView extends JFrame {
                 String sa=salaryTextField.getText();
 
                 if ( name.length()<1 || pw.length()<1|| sa.length()<1) {
-                    JOptionPane.showMessageDialog(CreateStaffView.this, "Please input all required information!");
+                    JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.ILLEGAL_INPUT);
                     return;
                 }
                 if (CommonUtils.isNumber(sa)) {
@@ -76,10 +76,12 @@ public class CreateStaffView extends JFrame {
 //                        JOptionPane.showMessageDialog(CreateStaffView.this, "The staff:"+name+" has been created successfully!\n The staff ID :"+newId);
                         new AssignSupervisorView(hrStaff,newId);
                     }else{
-                        JOptionPane.showMessageDialog(CreateStaffView.this, "Fail to create the new staff!");
+                        JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.OPERATION_FAILED);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(CreateStaffView.this, "Please input correct salary!\n salary: "+sa);
+                    JOptionPane.showMessageDialog(CreateStaffView.this,
+                            CommonConstant.Messages.ILLEGAL_INPUT+sa+CommonConstant.Messages.ILLEGAL_INPUT_SPECIFIC,
+                            CommonConstant.Messages.ILLEGAL,JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

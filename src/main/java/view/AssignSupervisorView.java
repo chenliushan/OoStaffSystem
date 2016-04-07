@@ -1,7 +1,9 @@
 package view;
 
+import Data.CommonConstant;
 import model.HrStaff;
 import model.Personnel;
+import model.Staff;
 import process.PersonnelProcess;
 import utils.CommonUtils;
 
@@ -20,7 +22,7 @@ public class AssignSupervisorView extends JFrame {
     private JFrame thisFrame;
 
     public AssignSupervisorView(Personnel personnel, int newStaffId) throws HeadlessException {
-        super("Assign a Supervisor");
+        super(CommonConstant.Messages.ASSIGN_A_SUPERVISOR);
         this.hrStaff = (HrStaff) personnel;
         this.newStaffId = newStaffId;
         this.thisFrame = this;
@@ -34,12 +36,12 @@ public class AssignSupervisorView extends JFrame {
         JPanel aPanel = new JPanel(new BorderLayout());
         JPanel topPanel = new JPanel();
 
-        topPanel.add(new JLabel("The new staff has been created successfully!" ));
+        topPanel.add(new JLabel(CommonConstant.Messages.CREATE_NEW_STAFF+" "+CommonConstant.Messages.SUCCESS));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
 
         JPanel upPanel = new JPanel();
-        JLabel label=new JLabel("The staff ID :" + newStaffId);
+        JLabel label=new JLabel(Staff.StaffStr.SUPERVISOR+" "+ Personnel.PersonnelStr.ID + newStaffId);
         label.setForeground(Color.red);
         upPanel.add(label);
         aPanel.add(upPanel, BorderLayout.CENTER);
@@ -51,20 +53,20 @@ public class AssignSupervisorView extends JFrame {
         }
 
         centerPanel.add(new JPanel());
-        centerPanel.add(new JLabel("Assign a supervisor :"));
+        centerPanel.add(new JLabel(CommonConstant.Messages.ASSIGN_A_SUPERVISOR));
         centerPanel.add(new JPanel());
 
         for (int i = 0; i < 3; i++) {
             centerPanel.add(new JPanel());
         }
 
-        centerPanel.add(new JLabel("Supervisor Id", SwingConstants.RIGHT));
+        centerPanel.add(new JLabel(Staff.StaffStr.SUPERVISOR+" "+ Personnel.PersonnelStr.ID , SwingConstants.RIGHT));
         final JTextField spidTextField = new JTextField("", 20);
         centerPanel.add(spidTextField);
         centerPanel.add(new JPanel());
 
         centerPanel.add(new JPanel());
-        JButton handelBtn = new JButton("Submit");
+        JButton handelBtn = new JButton(CommonConstant.Messages.SUBMIT);
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,12 +74,12 @@ public class AssignSupervisorView extends JFrame {
                 if (spid.length() > 0 && CommonUtils.isInteger(spid)) {
                     Integer id = Integer.valueOf(spid);
                     if (hrStaff.assignSupervisor(newStaffId, id)) {
-                        JOptionPane.showMessageDialog(AssignSupervisorView.this, "Success!");
+                        JOptionPane.showMessageDialog(AssignSupervisorView.this,CommonConstant.Messages.SUCCESS);
                         thisFrame.dispose();
                         return;
                     }
                 }
-                JOptionPane.showMessageDialog(AssignSupervisorView.this, "Please input correct supervisor ID!");
+                JOptionPane.showMessageDialog(AssignSupervisorView.this, CommonConstant.Messages.ILLEGAL_INPUT);
             }
         });
         centerPanel.add(handelBtn);

@@ -16,7 +16,7 @@ public class MenuView extends JFrame {
     Personnel personnel;
 
     public MenuView(Personnel personnel) throws HeadlessException {
-        super("Main Menu");
+        super(CommonConstant.Messages.MAIN_MENU);
         this.personnel = personnel;
         initView();
     }
@@ -26,7 +26,7 @@ public class MenuView extends JFrame {
         this.setLocation(100, 100);
         JPanel aPanel = new JPanel(new BorderLayout());
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel("Welcome " + personnel.getName() + "."));
+        topPanel.add(new JLabel(CommonConstant.Messages.WELCOME+ personnel.getName() + "."));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel(new GridLayout(8, 3, 5, 10));
@@ -38,7 +38,7 @@ public class MenuView extends JFrame {
 
         if (!personnel.getTitle().equals(CommonConstant.DIRECTOR_TITLE)) {
             centerPanel.add(new JPanel());
-            JButton applyBtn = new JButton("Apply for a leave");
+            JButton applyBtn = new JButton(CommonConstant.Messages.APPLY_FOR_A_LEAVE);
             applyBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -51,7 +51,7 @@ public class MenuView extends JFrame {
 
         } else {
             centerPanel.add(new JPanel());
-            JButton showAll = new JButton("Show all staff");
+            JButton showAll = new JButton(CommonConstant.Messages.SHOW_ALL_STAFF);
             showAll.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -63,7 +63,7 @@ public class MenuView extends JFrame {
         }
 
         centerPanel.add(new JPanel());
-        JButton handelBtn = new JButton("Handel request");
+        JButton handelBtn = new JButton(CommonConstant.Messages.HANDEL_REQUEST);
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,7 +75,7 @@ public class MenuView extends JFrame {
 
         if (personnel.getTitle().equals(CommonConstant.HR_TITLE)) {
             centerPanel.add(new JPanel());
-            JButton createBtn = new JButton("Create new staff");
+            JButton createBtn = new JButton(CommonConstant.Messages.CREATE_NEW_STAFF);
             createBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -86,7 +86,7 @@ public class MenuView extends JFrame {
             centerPanel.add(new JPanel());
 
             centerPanel.add(new JPanel());
-            JButton deleteBtn = new JButton("Delete a staff");
+            JButton deleteBtn = new JButton(CommonConstant.Messages.DELETE_A_STAFF);
             deleteBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
