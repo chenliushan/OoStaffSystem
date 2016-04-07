@@ -23,4 +23,14 @@ public class RuntimeData {
         public static String PASSWORD = "Jack";
         public static double SALARY = 100000;
     }
+    public static class StaffAInfo{
+        public static String NAME = "AAAA";
+        public static String PASSWORD = "AAAA";
+        public static double SALARY = 100000;
+    }
+    public static class StaffBInfo{
+        public static String NAME = "BBBB";
+        public static String PASSWORD = "BBBB";
+        public static double SALARY = 100000;
+    }
 }

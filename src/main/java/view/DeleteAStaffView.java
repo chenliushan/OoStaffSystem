@@ -1,10 +1,8 @@
 package view;
 
 import Data.CommonConstant;
-import exception.IllegalOperationException;
 import model.HrStaff;
 import model.Personnel;
-import model.Staff;
 import utils.CommonUtils;
 
 import javax.swing.*;

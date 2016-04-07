@@ -13,9 +13,9 @@ import java.util.regex.Pattern;
 public class CommonUtils {
     private static Logger logger = LogManager.getLogger(CommonUtils.class.getName());
 
-    public Date date(String dateTime) {
+    public static Date date(String dateTime) {
         Date date = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             if (dateTime != null) {
                 date = sdf.parse(dateTime);

@@ -1,6 +1,7 @@
 package view;
 
 import Data.CommonConstant;
+import Data.RuntimeData;
 import model.HrStaff;
 import model.Personnel;
 import utils.CommonUtils;
@@ -21,7 +22,7 @@ public class CreateStaffView extends JFrame {
     public CreateStaffView(Personnel personnel) throws HeadlessException {
         super(CommonConstant.Messages.CREATE_NEW_STAFF);
         this.hrStaff = (HrStaff) personnel;
-        thisFrame=this;
+        thisFrame = this;
         initView();
 
     }
@@ -60,28 +61,28 @@ public class CreateStaffView extends JFrame {
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name=nameTextField.getText();
-                String pw=passwordTextField.getText();
-                String sa=salaryTextField.getText();
+                String name = nameTextField.getText();
+                String pw = passwordTextField.getText();
+                String sa = salaryTextField.getText();
 
-                if ( name.length()<1 || pw.length()<1|| sa.length()<1) {
+                if (name.length() < 1 || pw.length() < 1 || sa.length() < 1) {
                     JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.ILLEGAL_INPUT);
                     return;
                 }
                 if (CommonUtils.isNumber(sa)) {
                     double salary = Double.valueOf(sa);
-                    int newId=hrStaff.createStaff(name, pw, salary);
-                    if(newId!=-1){
+                    int newId = hrStaff.createStaff(name, pw, salary);
+                    if (newId != -1) {
                         thisFrame.dispose();
 //                        JOptionPane.showMessageDialog(CreateStaffView.this, "The staff:"+name+" has been created successfully!\n The staff ID :"+newId);
-                        new AssignSupervisorView(hrStaff,newId);
-                    }else{
+                        new AssignSupervisorView(hrStaff, newId);
+                    } else {
                         JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.OPERATION_FAILED);
                     }
                 } else {
                     JOptionPane.showMessageDialog(CreateStaffView.this,
-                            CommonConstant.Messages.ILLEGAL_INPUT+sa+CommonConstant.Messages.ILLEGAL_INPUT_SPECIFIC,
-                            CommonConstant.Messages.ILLEGAL,JOptionPane.ERROR_MESSAGE);
+                            CommonConstant.Messages.ILLEGAL_INPUT + sa + CommonConstant.Messages.ILLEGAL_INPUT_SPECIFIC,
+                            CommonConstant.Messages.ILLEGAL, JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -89,9 +90,23 @@ public class CreateStaffView extends JFrame {
         centerPanel.add(new JPanel());
 
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             centerPanel.add(new JPanel());
         }
+        JButton defaultBtn = new JButton(CommonConstant.Messages.CREATE_D_STAFF);
+        defaultBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hrStaff.assignSupervisor(hrStaff.createStaff(RuntimeData.StaffAInfo.NAME,
+                        RuntimeData.StaffAInfo.PASSWORD,
+                        RuntimeData.StaffAInfo.SALARY), hrStaff.getId());
+                hrStaff.assignSupervisor(hrStaff.createStaff(RuntimeData.StaffBInfo.NAME,
+                        RuntimeData.StaffBInfo.PASSWORD,
+                        RuntimeData.StaffBInfo.SALARY), hrStaff.getId());
+            }
+        });
+        centerPanel.add(defaultBtn);
+
         aPanel.add(centerPanel, BorderLayout.CENTER);
 
         this.add(aPanel);

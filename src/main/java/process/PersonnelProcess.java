@@ -33,6 +33,7 @@ public class PersonnelProcess {
         PERSONNEL_LIST = new ArrayList<Personnel>();
         createDirector(RuntimeData.DirectorInfo.NAME, RuntimeData.DirectorInfo.PASSWORD, RuntimeData.DirectorInfo.SALARY);
         createHrStaff(RuntimeData.HrInfo.NAME, RuntimeData.HrInfo.PASSWORD, RuntimeData.HrInfo.SALARY);
+
     }
 
     public static PersonnelProcess getInstance() {
@@ -72,11 +73,8 @@ public class PersonnelProcess {
             } else if (pid == -1) {
                 id = getNextPersonnelId();
                 p.setId(id);
-                if (p.getClass().getName() == Staff.class.getName()) {
-                    PERSONNEL_LIST.add(p);
-                    NUM_OF_NORMAL_STAFF++;
-                    return id;
-                } else if (p.getClass().getSuperclass().getName() == Staff.class.getName()) {
+//                if (p.getClass().getName() == Staff.class.getName()) {
+                if (p instanceof HrStaff) {
                     if (!HAS_HR) {
                         PERSONNEL_LIST.add(p);
                         HAS_HR = true;
@@ -84,7 +82,12 @@ public class PersonnelProcess {
                     } else {
                         throw new DuplicatedException();
                     }
-                } else if (p.getClass().getName() == Director.class.getName()) {
+//                } else if (p.getClass().getSuperclass().getName() == Staff.class.getName()) {
+                } else if (p instanceof Staff) {
+                    PERSONNEL_LIST.add(p);
+                    NUM_OF_NORMAL_STAFF++;
+                    return id;
+                } else if (p instanceof Director) {
                     if (!HAS_DIRECTOR) {
                         PERSONNEL_LIST.add(p);
                         HAS_DIRECTOR = true;

@@ -41,8 +41,6 @@ public abstract class Personnel {
         this.salary = salary;
     }
 
-    public abstract boolean applyALeave(String startDate, String endDate);
-
     public abstract boolean HandleLeaveApplication(boolean decision);
 
     public String getPassword() {

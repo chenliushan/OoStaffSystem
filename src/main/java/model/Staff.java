@@ -1,6 +1,10 @@
 package model;
 
 import Data.CommonConstant;
+import process.LaProcess;
+import utils.CommonUtils;
+
+import java.util.Date;
 
 /**
  * Created by liushanchen on 16/3/28.
@@ -19,7 +23,6 @@ public class Staff extends Personnel {
     }
 
 
-
     public int getSupervisorId() {
         return supervisorId;
     }
@@ -28,9 +31,18 @@ public class Staff extends Personnel {
         this.supervisorId = supervisorId;
     }
 
-    public boolean applyALeave(String startDate, String endDate) {
 
-        return false;
+    public boolean applyALeave(String startDate, String endDate, String note) {
+        Date sd = CommonUtils.date(startDate);
+        Date ed = CommonUtils.date(endDate);
+        if(sd==null||ed==null){
+            return false;
+        }
+        if(LaProcess.getLaProcess().createLa(this, sd, ed, note)!=null){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public boolean HandleLeaveApplication(boolean decision) {
@@ -48,7 +60,8 @@ public class Staff extends Personnel {
                 ", supervisorId=" + supervisorId +
                 '}' + "\n";
     }
-    public static class StaffStr{
+
+    public static class StaffStr {
         public static final String SUPERVISOR = "Supervisor";
 
     }

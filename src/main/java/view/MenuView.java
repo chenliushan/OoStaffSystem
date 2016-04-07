@@ -42,7 +42,7 @@ public class MenuView extends JFrame {
             applyBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    new CreateLeavingApplicationView(personnel);
                 }
             });
             centerPanel.add(applyBtn);
@@ -59,6 +59,17 @@ public class MenuView extends JFrame {
                 }
             });
             centerPanel.add(showAll);
+            centerPanel.add(new JPanel());
+
+            centerPanel.add(new JPanel());
+            JButton showAllLa = new JButton(CommonConstant.Messages.SHOW_ALL_LA);
+            showAllLa.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new PrintAllLaView(personnel);
+                }
+            });
+            centerPanel.add(showAllLa);
             centerPanel.add(new JPanel());
         }
 

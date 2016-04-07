@@ -1,6 +1,7 @@
 package model;
 
 import Data.CommonConstant;
+import process.LaProcess;
 import process.PersonnelProcess;
 
 /**
@@ -18,6 +19,9 @@ public class Director extends Personnel {
 
     public String showAllStaff() {
         return PersonnelProcess.getInstance().printInfo();
+    }
+    public String showAllLa() {
+        return LaProcess.getLaProcess().printInfo();
     }
     public boolean HandleLeaveApplication(boolean decision) {
         return false;
