@@ -23,19 +23,26 @@ import java.util.List;
  * Should change to Singleton design patten
  */
 public class PersonnelProcess {
+    private static PersonnelProcess thisInstance=null;
     private static Logger logger = LogManager.getLogger(Personnel.class.getName());
     private static List<Personnel> PERSONNEL_LIST = null;
     private static int NUM_OF_NORMAL_STAFF = 0;
     private static boolean HAS_DIRECTOR = false;
     private static boolean HAS_HR = false;
 
-    public PersonnelProcess() {
+    private PersonnelProcess() {
         PERSONNEL_LIST = new ArrayList<Personnel>();
         createDirector(RuntimeData.DirectorInfo.NAME, RuntimeData.DirectorInfo.PASSWORD, RuntimeData.DirectorInfo.SALARY);
         createHrStaff(RuntimeData.HrInfo.NAME, RuntimeData.HrInfo.PASSWORD, RuntimeData.HrInfo.SALARY);
     }
+    public static PersonnelProcess getInstance(){
+        if(thisInstance==null){
+            thisInstance=new PersonnelProcess();
+        }
+        return thisInstance;
+    }
 
-    private static int getNextPersonnelId() throws UninitializedException {
+    private  int getNextPersonnelId() throws UninitializedException {
         if (PERSONNEL_LIST != null) {
             return PERSONNEL_LIST.size() + 1;
         } else {
@@ -43,7 +50,7 @@ public class PersonnelProcess {
         }
     }
 
-    public static int addPersonnel(Personnel p) throws DuplicatedException, IllegalOperationException, UninitializedException {
+    public  int addPersonnel(Personnel p) throws DuplicatedException, IllegalOperationException, UninitializedException {
         int id = -1;
         if (p != null) {
             int pid = p.getId();
@@ -84,7 +91,7 @@ public class PersonnelProcess {
         throw new IllegalOperationException("addPersonnel() p=" + p.toString());
     }
 
-    public static boolean assignSupervisor(int newStaffId, int spid) {
+    public  boolean assignSupervisor(int newStaffId, int spid) {
         if (newStaffId != spid && newStaffId <= PERSONNEL_LIST.size() && spid <= PERSONNEL_LIST.size()) {
             try {
                 if (searchById(spid) != null) {
@@ -115,7 +122,7 @@ public class PersonnelProcess {
         throw new IllegalOperationException("deletePersonnel() p=" + p.toString());
     }
 
-    public static Personnel searchById(int id) throws IllegalOperationException {
+    public  Personnel searchById(int id) throws IllegalOperationException {
         if (PERSONNEL_LIST == null || id > PERSONNEL_LIST.size()) {
             logger.warn("searchById( ID is lager than list size)");
             return null;
@@ -167,7 +174,7 @@ public class PersonnelProcess {
         }
     }
 
-    public static String  printInfo() {
+    public  String  printInfo() {
         logger.info("PERSONNEL_LIST:" + PERSONNEL_LIST);
         return PERSONNEL_LIST.toString();
     }

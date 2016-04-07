@@ -17,7 +17,7 @@ public class Director extends Personnel {
     }
 
     public String showAllStaff() {
-        return PersonnelProcess.printInfo();
+        return PersonnelProcess.getInstance().printInfo();
     }
     public boolean HandleLeaveApplication(boolean decision) {
         return false;

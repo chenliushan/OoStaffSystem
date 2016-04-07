@@ -20,7 +20,7 @@ public class LoginProcess {
         if(CommonUtils.isInteger(staffId)){
             int id=Integer.valueOf(staffId);
             try {
-                Personnel personnel=PersonnelProcess.searchById(id);
+                Personnel personnel=PersonnelProcess.getInstance().searchById(id);
                 if(personnel!=null&&personnel.getPassword().equals(password)){
                     MenuView menuView=new MenuView(personnel);
                     return true;

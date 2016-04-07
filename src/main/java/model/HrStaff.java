@@ -18,7 +18,7 @@ public class HrStaff extends Staff implements Hr {
         Staff staff=new Staff(name, password, salary);
 
         try {
-            return PersonnelProcess.addPersonnel(staff);
+            return PersonnelProcess.getInstance().addPersonnel(staff);
         } catch (DuplicatedException e) {
             e.printStackTrace();
         } catch (IllegalOperationException e) {
@@ -31,7 +31,7 @@ public class HrStaff extends Staff implements Hr {
 
     @Override
     public boolean assignSupervisor(int newStaffId, int spid) {
-        return  PersonnelProcess.assignSupervisor(newStaffId,spid);
+        return  PersonnelProcess.getInstance().assignSupervisor(newStaffId,spid);
     }
 
     public boolean deleteStaff() {

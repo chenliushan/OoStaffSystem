@@ -13,13 +13,13 @@ public class MyMainProcess {
 
     public static void main(String[] arg) {
         init();
-        LoginView login = new LoginView();
+        new LoginView();
 
     }
 
     private static void init() {
         RuntimeData.leavingApplicationList = new ArrayList<LeavingApplication>();
-        PersonnelProcess personnelProcess = new PersonnelProcess();
+        PersonnelProcess personnelProcess = PersonnelProcess.getInstance();
     }
 
 }
