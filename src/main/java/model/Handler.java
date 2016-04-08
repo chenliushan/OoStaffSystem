@@ -2,6 +2,7 @@ package model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import process.PersonnelProcess;
 import utils.CommonUtils;
 
 import java.util.ArrayList;
@@ -33,13 +34,12 @@ public abstract class Handler {
 
     public void notifySupervisor(LeavingApplication la) {
         supervisor.shouldBeHandle.add(la);
-        logger.info("LeavingApplicationS:"+la);
-        logger.info("LeavingApplicationS:"+shouldBeHandle);
     }
 
 
     public void endorse(LeavingApplication la) {
         shouldBeHandle.remove(la);
+        la.endorsed(this);
         if (supervisor != null) {
             notifySupervisor(la);
         } else {
@@ -48,10 +48,16 @@ public abstract class Handler {
     }
 
     private void notifyApplicant(LeavingApplication la) {
-
+       Personnel applicant= PersonnelProcess.getInstance().searchById(la.getApplicantId());
+        if(applicant instanceof Staff){
+            Staff s=(Staff) applicant;
+            s.receiveApplicationResult(la);
+        }
     }
 
     public void decline(LeavingApplication la) {
+        shouldBeHandle.remove(la);
+        la.declined(this);
         notifyApplicant(la);
     }
 
@@ -60,8 +66,6 @@ public abstract class Handler {
     }
 
     public List<LeavingApplication> getAllShouldBeHandle() {
-        logger.info("LeavingApplicationS:"+shouldBeHandle);
-
         return shouldBeHandle;
     }
 

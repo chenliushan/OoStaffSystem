@@ -1,7 +1,6 @@
 package view;
 
 import Data.CommonConstant;
-import model.Director;
 import model.LeavingApplication;
 import model.Personnel;
 import model.Staff;
@@ -13,26 +12,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
 
 /**
  * Created by liushanchen on 16/3/28.
  */
-public class LaToBeHandleView extends JFrame {
-    private static Logger logger = LogManager.getLogger(LaToBeHandleView.class.getName());
+public class LaResultsView extends JFrame {
+    private static Logger logger = LogManager.getLogger(LaResultsView.class.getName());
 
-    private Personnel personnel;
+    private Staff personnel;
     private JFrame thisFrame;
     private JList jList;
     private DefaultListModel listModel;
     private java.util.List<LeavingApplication> las;
 
-    public LaToBeHandleView(Personnel personnel) throws HeadlessException {
+    public LaResultsView(Personnel personnel) throws HeadlessException {
         super(CommonConstant.Messages.SHOW_ALL_LA);
-        this.personnel = personnel;
-        this.thisFrame = this;
-        initView();
+        if(personnel instanceof Staff){
+            this.personnel = (Staff) personnel;
+            this.thisFrame = this;
+            initView();
+        }
+
 
     }
 
@@ -51,7 +52,7 @@ public class LaToBeHandleView extends JFrame {
 
         jList = new JList();
         listModel = new DefaultListModel();
-        las =personnel.getAllShouldBeHandle();
+        las =personnel.getMyApplicationResults();
         for (LeavingApplication la : las) {
             listModel.addElement(la.toDisplayStr());
         }
@@ -60,15 +61,14 @@ public class LaToBeHandleView extends JFrame {
         jList.setModel(listModel);
         jList.setSelectedIndex(0);
 
-        JButton handelBtn = new JButton(CommonConstant.Messages.HANDEL_REQUEST);
+        JButton handelBtn = new JButton(CommonConstant.Messages.DETAIL);
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selected = jList.getSelectedIndex();
                 if(selected!=-1){
                     LeavingApplication la = las.get(selected);
-                    thisFrame.dispose();
-                    new LaHandleView(personnel,la);
+                    JOptionPane.showMessageDialog(LaResultsView.this, la.toString());
                 }
             }
         });

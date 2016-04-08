@@ -1,8 +1,10 @@
 package view;
 
 import Data.CommonConstant;
+import com.sun.net.httpserver.Authenticator;
 import model.LeavingApplication;
 import model.Personnel;
+import org.omg.PortableInterceptor.SUCCESSFUL;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,11 +16,13 @@ import java.awt.event.ActionListener;
  */
 public class LaHandleView extends JFrame {
 
-    Personnel personnel;
-    LeavingApplication la;
+    private Personnel personnel;
+    private JFrame thisFrame;
+    private LeavingApplication la;
 
     public LaHandleView(Personnel personnel, LeavingApplication la) {
         super(CommonConstant.Messages.HANDEL_LEAVING_APPLICATIONS);
+        thisFrame=this;
         this.personnel = personnel;
         this.la = la;
         initView();
@@ -43,7 +47,9 @@ public class LaHandleView extends JFrame {
         showAll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                personnel.endorse(la);
+                JOptionPane.showMessageDialog(LaHandleView.this, CommonConstant.Messages.SUCCESS);
+                thisFrame.dispose();
             }
         });
         bottomPanel.add(showAll);
@@ -52,7 +58,9 @@ public class LaHandleView extends JFrame {
         showAllLa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                personnel.decline(la);
+                JOptionPane.showMessageDialog(LaHandleView.this, CommonConstant.Messages.SUCCESS);
+                thisFrame.dispose();
             }
         });
         bottomPanel.add(showAllLa);

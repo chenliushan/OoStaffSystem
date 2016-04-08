@@ -20,9 +20,9 @@ public class Director extends Personnel {
 //    public String showAllLa() {
 //        return LaProcess.getLaProcess().printInfo();
 //    }
-    public boolean HandleLeaveApplication(boolean decision) {
-        return false;
-    }
+//    public boolean HandleLeaveApplication(boolean decision) {
+//        return false;
+//    }
 
 
 }

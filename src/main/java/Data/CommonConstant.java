@@ -35,6 +35,9 @@ public class CommonConstant {
         public static final String LEAVE_INFO = "Leaving Application Information:";
         public static final String TODAY = "Today";
 
+        public static final String VIEW_MY_APPLICATION = "View my results";
+        public static final String DETAIL = "View details";
+
         public static final String SHOW_ALL_STAFF = "Show all staff";
         public static final String ALL_STAFF_IS = "Here is all the staff information in the system:";
 

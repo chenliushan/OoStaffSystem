@@ -47,7 +47,7 @@ public abstract class Personnel extends Handler {
         this.salary = salary;
     }
 
-    public abstract boolean HandleLeaveApplication(boolean decision);
+//    public abstract boolean HandleLeaveApplication(boolean decision);
 
     public String getPassword() {
         return password;

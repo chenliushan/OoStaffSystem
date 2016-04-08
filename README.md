@@ -6,7 +6,9 @@ The default director and HR is:
 
 
 In this System, Personnel is the parent of the Staff and Director
-HR extend Staff
+HR extend Staff.
+A constraint that all the staff have to create with a not null supervisor is implemented.
+Only Director has a null supervisor
 A singleton Personnel process is maintaining a list of temporary personnel object.
 
 The chain of responsibility is implemented in the MyChainHandler

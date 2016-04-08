@@ -63,7 +63,8 @@ public class PersonnelProcess {
 
     public int addPersonnel(Staff p) {
         int id = -1;
-        if (p != null) {
+        //A constraint that all the staff have to create with a not null supervisor is implemented.
+        if (p != null && p.getSupervisor() != null) {
             id = getNextPersonnelId();
             p.setId(id);
             if (p instanceof HrStaff && !HAS_HR) {

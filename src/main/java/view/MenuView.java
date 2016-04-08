@@ -2,6 +2,7 @@ package view;
 
 import Data.CommonConstant;
 import model.Personnel;
+import model.Staff;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,14 +30,22 @@ public class MenuView extends JFrame {
         topPanel.add(new JLabel(CommonConstant.Messages.WELCOME + personnel.getName() + "."));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
-        JPanel centerPanel = new JPanel(new GridLayout(8, 3, 5, 10));
+        JPanel centerPanel = new JPanel(new GridLayout(9, 3, 5, 10));
 
+        centerPanel.add(new JLabel(Personnel.PersonnelStr.ID+": "+personnel.getId(), SwingConstants.RIGHT));
         centerPanel.add(new JPanel());
-        centerPanel.add(new JLabel(personnel.getTitle(), SwingConstants.RIGHT));
-        centerPanel.add(new JPanel());
+        centerPanel.add(new JLabel(personnel.getTitle(), SwingConstants.LEFT));
 
 
         if (!personnel.getTitle().equals(CommonConstant.DIRECTOR_TITLE)) {
+           if( personnel.getSupervisor() !=null){
+               Personnel p=(Personnel)personnel.getSupervisor();
+               centerPanel.add(new JPanel());
+               centerPanel.add(new JLabel(Staff.StaffStr.SUPERVISOR+": "+p.getId(), SwingConstants.CENTER));
+               centerPanel.add(new JPanel());
+           }
+
+
             centerPanel.add(new JPanel());
             JButton applyBtn = new JButton(CommonConstant.Messages.APPLY_FOR_A_LEAVE);
             applyBtn.addActionListener(new ActionListener() {
@@ -48,8 +57,22 @@ public class MenuView extends JFrame {
             centerPanel.add(applyBtn);
             centerPanel.add(new JPanel());
 
+            centerPanel.add(new JPanel());
+            JButton resultBtn = new JButton(CommonConstant.Messages.VIEW_MY_APPLICATION);
+            resultBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new LaResultsView(personnel);
+                }
+            });
+            centerPanel.add(resultBtn);
+            centerPanel.add(new JPanel());
 
         } else {
+            centerPanel.add(new JPanel());
+            centerPanel.add(new JPanel());
+            centerPanel.add(new JPanel());
+
             centerPanel.add(new JPanel());
             JButton showAll = new JButton(CommonConstant.Messages.SHOW_ALL_STAFF);
             showAll.addActionListener(new ActionListener() {
@@ -61,6 +84,10 @@ public class MenuView extends JFrame {
             centerPanel.add(showAll);
             centerPanel.add(new JPanel());
 
+
+            centerPanel.add(new JPanel());
+            centerPanel.add(new JPanel());
+            centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
@@ -85,6 +112,8 @@ public class MenuView extends JFrame {
         });
         centerPanel.add(handelBtn);
         centerPanel.add(new JPanel());
+
+
 
         if (personnel.getTitle().equals(CommonConstant.HR_TITLE)) {
             centerPanel.add(new JPanel());
@@ -111,7 +140,7 @@ public class MenuView extends JFrame {
         }
 
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 6; i++) {
             centerPanel.add(new JPanel());
         }
         aPanel.add(centerPanel, BorderLayout.CENTER);

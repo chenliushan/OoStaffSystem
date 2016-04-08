@@ -70,9 +70,37 @@ public class LeavingApplication {
 
     }
 
+    /**
+     *
+     * @param handler
+     * @return false means operation fail.
+     */
+    public boolean endorsed(Handler handler) {
+        if(handler instanceof Staff){
+            Staff staff=(Staff)handler;
+            approverId.add(staff.getId());
+            return true;
+        }else if(handler instanceof Director){
+            Director d=(Director)handler;
+            approverId.add(d.getId());
+            status = SUCCESS;
+            return true;
+        }
+        return false;
+    }
+
     public void decline(Personnel personnel) {
         opponentId = personnel.getId();
         this.status = FAIL;
+//        nextHandler = -1;
+    }
+    public void declined(Handler handler) {
+        if(handler instanceof Personnel){
+            Personnel p=(Personnel) handler;
+            opponentId = p.getId();
+            this.status = FAIL;
+        }
+
 //        nextHandler = -1;
     }
 

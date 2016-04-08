@@ -4,22 +4,27 @@ import Data.CommonConstant;
 import process.LaProcess;
 import utils.CommonUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by liushanchen on 16/3/28.
  */
 public class Staff extends Personnel {
 
+    private List<LeavingApplication> myApplicationResults=null;
 //    int supervisorId;
 
 
     public Staff(Personnel personnel, String name, String password, double salary) {
         super(personnel, name, password, salary, CommonConstant.STAFF_TITLE);
+        myApplicationResults=new ArrayList<LeavingApplication>();
     }
 
     public Staff(Personnel personnel, String name, String password, double salary, String title) {
         super(personnel, name, password, salary, title);
+        myApplicationResults=new ArrayList<LeavingApplication>();
     }
 
 
@@ -27,6 +32,13 @@ public class Staff extends Personnel {
 //        return supervisorId;
 //    }
 
+    public void receiveApplicationResult(LeavingApplication la){
+        myApplicationResults.add(la);
+    }
+
+    public List<LeavingApplication> getMyApplicationResults() {
+        return myApplicationResults;
+    }
 
     public boolean applyALeave(String startDate, String endDate, String note) {
         Date sd = CommonUtils.getDate(startDate);
@@ -41,12 +53,8 @@ public class Staff extends Personnel {
             return true;
         }
         return false;
-
     }
 
-    public boolean HandleLeaveApplication(boolean decision) {
-        return false;
-    }
 
     @Override
     public String toString() {
