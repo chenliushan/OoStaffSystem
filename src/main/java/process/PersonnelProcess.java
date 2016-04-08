@@ -2,10 +2,7 @@ package process;
 
 import Data.CommonConstant;
 import Data.RuntimeData;
-import model.Director;
-import model.HrStaff;
-import model.Personnel;
-import model.Staff;
+import model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -92,8 +89,24 @@ public class PersonnelProcess {
         return id;
     }
 
+    private boolean ifIsSupervisor(int pid) {
+        for (Personnel p : PERSONNEL_LIST) {
+            Handler h = p.getSupervisor();
+            if (h != null && h instanceof Personnel) {
+                Personnel ps = (Personnel) h;
+                if (ps.getId() == pid) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean deletePersonnel(Personnel p) {
-        if (p != null && NUM_OF_NORMAL_STAFF > 0) {
+        if(p instanceof Director ||p instanceof HrStaff){
+            return false;
+        }
+        if (p != null && NUM_OF_NORMAL_STAFF > 0 && !ifIsSupervisor(p.getId())) {
             if (p.getClass().getName() == Staff.class.getName()) {
                 PERSONNEL_LIST.remove(p);
                 NUM_OF_NORMAL_STAFF--;

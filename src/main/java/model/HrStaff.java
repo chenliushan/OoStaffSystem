@@ -20,8 +20,7 @@ public class HrStaff extends Staff implements Hr {
 
 
     public boolean deleteStaff(Personnel staff) {
-        PersonnelProcess.getInstance().deletePersonnel(staff);
-        return false;
+        return PersonnelProcess.getInstance().deletePersonnel(staff);
     }
 
     @Override
