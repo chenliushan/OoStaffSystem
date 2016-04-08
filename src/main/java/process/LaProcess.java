@@ -74,17 +74,16 @@ public class LaProcess {
      * @param note      nullable
      * @return the new LeavingApplication
      */
-    public LeavingApplication createLa(Staff s, Date startDate, Date endDate, String note) {
-        if (startDate != null && endDate != null) {
-            int laId = getNextId();
-            LeavingApplication la = new LeavingApplication(laId, s.getId(), s.getSupervisorId(), startDate, endDate, note);
-            laList.add(la);
-            return la;
-        } else {
-            return null;
-        }
-
-    }
+//    public LeavingApplication createLa(Staff s, Date startDate, Date endDate, String note) {
+//        if (startDate != null && endDate != null) {
+//            int laId = getNextId();
+//            LeavingApplication la = new LeavingApplication(laId, s.getId(),startDate, endDate, note);
+//            laList.add(la);
+//            return la;
+//        } else {
+//            return null;
+//        }
+//    }
 
     /**
      * @param id
@@ -126,15 +125,15 @@ public class LaProcess {
      * @param id
      * @return the LeavingApplication I should handle
      */
-    public List<LeavingApplication> getApplicationIShouldHandle(int id) {
-        List<LeavingApplication> myApp = new ArrayList<LeavingApplication>();
-        for (LeavingApplication la : laList) {
-            if (la.getNextHandler() == id) {
-                myApp.add(la);
-            }
-        }
-        return myApp;
-    }
+//    public List<LeavingApplication> getApplicationIShouldHandle(int id) {
+//        List<LeavingApplication> myApp = new ArrayList<LeavingApplication>();
+//        for (LeavingApplication la : laList) {
+//            if (la.getNextHandler() == id) {
+//                myApp.add(la);
+//            }
+//        }
+//        return myApp;
+//    }
 
     /**
      * @param id

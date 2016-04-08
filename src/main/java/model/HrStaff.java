@@ -10,27 +10,17 @@ import process.PersonnelProcess;
  * Created by liushanchen on 16/3/28.
  */
 public class HrStaff extends Staff implements Hr {
-    public HrStaff(String name, String password, double salary) {
-        super(name, password, salary, CommonConstant.HR_TITLE);
-    }
-
-    public int createStaff(String name, String password, double salary) {
-        Staff staff = new Staff(name, password, salary);
-
-        try {
-            return PersonnelProcess.getInstance().addPersonnel(staff);
-        } catch (DuplicatedException e) {
-            e.printStackTrace();
-        } catch (IllegalOperationException e) {
-            e.printStackTrace();
-        }
-        return staff.getId();
+    public HrStaff(Personnel personnel, String name, String password, double salary) {
+        super(personnel, name, password, salary, CommonConstant.HR_TITLE);
     }
 
     @Override
-    public boolean assignSupervisor(int newStaffId, int spid) {
-        return PersonnelProcess.getInstance().assignSupervisor(newStaffId, spid);
+    public int createStaff(Personnel personnel, String name, String password, double salary) {
+        Staff staff = new Staff(personnel, name, password, salary);
+        return PersonnelProcess.getInstance().addPersonnel(staff);
+
     }
+
 
     public boolean deleteStaff(Personnel staff) {
         PersonnelProcess.getInstance().deletePersonnel(staff);

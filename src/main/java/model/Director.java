@@ -10,21 +10,19 @@ import process.PersonnelProcess;
 public class Director extends Personnel {
 
     public Director(String name, String password, double salary) {
-        super(name, password, salary, CommonConstant.DIRECTOR_TITLE);
+        super(null,name, password, salary, CommonConstant.DIRECTOR_TITLE);
     }
 
-    public boolean applyALeave(String startDate, String endDate) {
-        return false;
-    }
 
     public String showAllStaff() {
         return PersonnelProcess.getInstance().printInfo();
     }
-    public String showAllLa() {
-        return LaProcess.getLaProcess().printInfo();
-    }
+//    public String showAllLa() {
+//        return LaProcess.getLaProcess().printInfo();
+//    }
     public boolean HandleLeaveApplication(boolean decision) {
         return false;
     }
+
 
 }

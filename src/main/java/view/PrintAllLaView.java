@@ -34,7 +34,7 @@ public class PrintAllLaView extends JFrame {
         aPanel.add(topPanel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel();
-        centerPanel.add(new JTextArea(director.showAllLa()));
+//        centerPanel.add(new JTextArea(director.showAllLa()));
         aPanel.add(centerPanel, BorderLayout.CENTER);
 
         this.add(aPanel);

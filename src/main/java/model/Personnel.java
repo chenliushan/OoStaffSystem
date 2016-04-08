@@ -7,14 +7,16 @@ import java.util.List;
 /**
  * Created by liushanchen on 16/3/28.
  */
-public abstract class Personnel implements HandleRequest{
+public abstract class Personnel extends Handler {
+
     private int id = -1;//is the personnel list index - 1.
     private String name;
     private double salary;
     private String password;
     private String title;
 
-    public Personnel(String name, String password, double salary, String title) {
+    public Personnel(Personnel supervisor,String name, String password, double salary, String title) {
+        super(supervisor);
         this.name = name;
         this.password = password;
         this.salary = salary;
@@ -70,10 +72,9 @@ public abstract class Personnel implements HandleRequest{
         this.title = title;
     }
 
-    @Override
-    public List<LeavingApplication> getMyToBeHandleLa(){
-        return LaProcess.getLaProcess().getApplicationIShouldHandle(id);
-    }
+//    public List<LeavingApplication> getMyToBeHandleLa(){
+//        return LaProcess.getLaProcess().getApplicationIShouldHandle(id);
+//    }
     @Override
     public String toString() {
         return "Personnel{" +
@@ -82,6 +83,7 @@ public abstract class Personnel implements HandleRequest{
                 ", salary=" + salary +
                 ", password='" + password + '\'' +
                 ", title='" + title + '\'' +
+                ", supervisor='" + getSupervisor() + '\'' +
                 '}' + "\n";
 
     }

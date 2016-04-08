@@ -18,7 +18,7 @@ public class CommonConstant {
         public static final String LOGIN = "Login";
         public static final String MAIN_MENU = "Main menu";
 
-        public static final String WELCOME = "Welcome :";
+        public static final String WELCOME = "Welcome: ";
         public static final String PROGRAM_NAME = "Staff System";
 
         public static final String SUBMIT = "SUBMIT";
@@ -59,7 +59,8 @@ public class CommonConstant {
 
         public static final String CREATE_NEW_STAFF = "Create new staff";
         public static final String CREATE_D_STAFF = "Create option staff";
-        public static final String ASSIGN_A_SUPERVISOR = "Assign a Supervisor";
+        public static final String ASSIGN_A_SUPERVISOR = "Assign a Supervisor First!";
+        public static final String VIEW_STAFF_INFO = "Check Staff information";
 
 
     }

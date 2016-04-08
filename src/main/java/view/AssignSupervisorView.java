@@ -70,11 +70,9 @@ public class AssignSupervisorView extends JFrame {
                 String spid = spidTextField.getText();
                 if (spid.length() > 0 && CommonUtils.isInteger(spid)) {
                     Integer id = Integer.valueOf(spid);
-                    if (hrStaff.assignSupervisor(newStaffId, id)) {
-                        JOptionPane.showMessageDialog(AssignSupervisorView.this,CommonConstant.Messages.SUCCESS);
-                        thisFrame.dispose();
-                        return;
-                    }
+                    hrStaff.viewStaffInfo(id);
+                    JOptionPane.showMessageDialog(AssignSupervisorView.this,CommonConstant.Messages.SUCCESS);
+
                 }
                 JOptionPane.showMessageDialog(AssignSupervisorView.this, CommonConstant.Messages.STAFF_NOT_FOUND);
             }

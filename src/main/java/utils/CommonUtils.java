@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class CommonUtils {
     private static Logger logger = LogManager.getLogger(CommonUtils.class.getName());
 
-    public static Date date(String dateTime) {
+    public static Date getDate(String dateTime) {
         Date date = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {

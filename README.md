@@ -7,5 +7,8 @@ The default director and HR is:
 
 In this System, Personnel is the parent of the Staff and Director
 HR extend Staff
+A singleton Personnel process is maintaining a list of temporary personnel object.
 
-ALL the personnel has the Ability to Handle the LeavingApplication, while the handle methods are different among different types of personnel.
+The chain of responsibility is implemented in the MyChainHandler
+And the Personnel extend the MyChainHandler, so all the personnel is a Handler
+all of them can handle the LeavingApplication, while the handle methods are different among different types of personnel.

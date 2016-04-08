@@ -11,38 +11,37 @@ import java.util.Date;
  */
 public class Staff extends Personnel {
 
-    int supervisorId;
+//    int supervisorId;
 
 
-    public Staff(String name, String password, double salary) {
-        super(name, password, salary, CommonConstant.STAFF_TITLE);
+    public Staff(Personnel personnel, String name, String password, double salary) {
+        super(personnel, name, password, salary, CommonConstant.STAFF_TITLE);
     }
 
-    public Staff(String name, String password, double salary, String title) {
-        super(name, password, salary, title);
+    public Staff(Personnel personnel, String name, String password, double salary, String title) {
+        super(personnel, name, password, salary, title);
     }
 
 
-    public int getSupervisorId() {
-        return supervisorId;
-    }
-
-    public void setSupervisorId(int supervisorId) {
-        this.supervisorId = supervisorId;
-    }
+//    public int getSupervisorId() {
+//        return supervisorId;
+//    }
 
 
     public boolean applyALeave(String startDate, String endDate, String note) {
-        Date sd = CommonUtils.date(startDate);
-        Date ed = CommonUtils.date(endDate);
-        if(sd==null||ed==null){
+        Date sd = CommonUtils.getDate(startDate);
+        Date ed = CommonUtils.getDate(endDate);
+        if (sd == null || ed == null) {
             return false;
         }
-        if(LaProcess.getLaProcess().createLa(this, sd, ed, note)!=null){
+        if (startDate != null && endDate != null) {
+//            int laId = getNextId();
+            LeavingApplication la = new LeavingApplication(getId(), sd, ed, note);
+            notifySupervisor(la);
             return true;
-        }else{
-            return false;
         }
+        return false;
+
     }
 
     public boolean HandleLeaveApplication(boolean decision) {
@@ -51,15 +50,29 @@ public class Staff extends Personnel {
 
     @Override
     public String toString() {
+        if(getSupervisor() instanceof Personnel){
+            Personnel p=(Personnel)getSupervisor();
+            return "Staff{" +
+                    "id=" + super.getId() +
+                    ", name='" + super.getName() + '\'' +
+                    ", salary=" + super.getSalary() +
+                    ", password='" + super.getPassword() + '\'' +
+                    ", title='" + super.getTitle() + '\'' +
+                    ", supervisor='" + p.getId()+ '\'' +
+                    '}' + "\n";
+        }
         return "Staff{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", salary=" + super.getSalary() +
                 ", password='" + super.getPassword() + '\'' +
                 ", title='" + super.getTitle() + '\'' +
-                ", supervisorId=" + supervisorId +
+
+                ", supervisor='" + super.getSupervisor() + '\'' +
+//                ", supervisorId=" + supervisorId +
                 '}' + "\n";
     }
+
 
     public static class StaffStr {
         public static final String SUPERVISOR = "Supervisor";

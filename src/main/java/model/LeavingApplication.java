@@ -27,9 +27,9 @@ public class LeavingApplication {
     private List<Integer> approverId = null;
     private int opponentId = -1;
     private int status;
-    private int nextHandler = -1;
+//    private int nextHandler = -1;
 
-    public LeavingApplication(int aid, int applicantId, int nextHandler, Date startDate, Date endDate, String note) {
+    public LeavingApplication(int aid, int applicantId,  Date startDate, Date endDate, String note) {
         this.Aid = aid;
         this.applicantId = applicantId;
         this.endDate = endDate;
@@ -37,7 +37,16 @@ public class LeavingApplication {
         this.startDate = startDate;
         this.status = PROCESSING;
         this.approverId = new ArrayList<Integer>();
-        this.nextHandler = nextHandler;
+//        this.nextHandler = nextHandler;
+    }
+    public LeavingApplication( int applicantId,  Date startDate, Date endDate, String note) {
+        this.applicantId = applicantId;
+        this.endDate = endDate;
+        this.note = note;
+        this.startDate = startDate;
+        this.status = PROCESSING;
+        this.approverId = new ArrayList<Integer>();
+//        this.nextHandler = nextHandler;
     }
 
     /**
@@ -48,7 +57,7 @@ public class LeavingApplication {
      */
     public boolean endorse(Staff staff) {
         approverId.add(staff.getId());
-        nextHandler = staff.getSupervisorId();
+//        nextHandler = staff.getSupervisorId();
         return false;
 
     }
@@ -56,7 +65,7 @@ public class LeavingApplication {
     public boolean endorse(Director d) {
         approverId.add(d.getId());
         status = SUCCESS;
-        nextHandler = -1;
+//        nextHandler = -1;
         return true;
 
     }
@@ -64,7 +73,7 @@ public class LeavingApplication {
     public void decline(Personnel personnel) {
         opponentId = personnel.getId();
         this.status = FAIL;
-        nextHandler = -1;
+//        nextHandler = -1;
     }
 
     public int getAid() {
@@ -99,9 +108,9 @@ public class LeavingApplication {
         return status;
     }
 
-    public int getNextHandler() {
-        return nextHandler;
-    }
+//    public int getNextHandler() {
+//        return nextHandler;
+//    }
 
     @Override
     public String toString() {
@@ -114,7 +123,7 @@ public class LeavingApplication {
                 "\n | note :'" + note + '\'' +
                 "\n | approverId :" + approverId +
                 " | opponentId :" + opponentId +
-                " | nextHandler :" + nextHandler +
+//                " | nextHandler :" + nextHandler +
                 "}\n";
     }
 
