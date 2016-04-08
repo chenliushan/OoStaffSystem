@@ -78,7 +78,7 @@ public class MenuView extends JFrame {
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new LaToBeHandleView(personnel);
             }
         });
         centerPanel.add(handelBtn);

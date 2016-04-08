@@ -32,13 +32,23 @@ public class CommonConstant {
 
 
         public static final String APPLY_FOR_A_LEAVE = "Apply for a leave";
+        public static final String LEAVE_INFO = "Leaving Application Information:";
+        public static final String TODAY = "Today";
 
         public static final String SHOW_ALL_STAFF = "Show all staff";
         public static final String ALL_STAFF_IS = "Here is all the staff information in the system:";
+
         public static final String SHOW_ALL_LA = "Show all Leaving Application";
         public static final String ALL_LA_IS = "Here is all the Leaving Application information in the system:";
 
         public static final String HANDEL_REQUEST = "Handel request";
+        public static final String HANDEL_LEAVING_APPLICATIONS = "Handel Leaving Application";
+        public static final String LEAVING_APPLICATIONS_DETAIL = "Leaving Application Detail:";
+        public static final String REQUEST_TO_BE_HANDLE = "Leaving Applications I should handle:";
+        public static final String REQUEST_HANDLED = "Leaving Applications I have handle:";
+        public static final String MY_REQUEST = "My Leaving Applications";
+        public static final String DECLINE = "Decline";
+        public static final String ENDORSE = "Endorse";
 
         public static final String DELETE_A_STAFF = "Delete a staff";
         public static final String DELETE_BY_ID = "By staff ID: ";

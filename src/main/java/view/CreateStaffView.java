@@ -74,7 +74,6 @@ public class CreateStaffView extends JFrame {
                     int newId = hrStaff.createStaff(name, pw, salary);
                     if (newId != -1) {
                         thisFrame.dispose();
-//                        JOptionPane.showMessageDialog(CreateStaffView.this, "The staff:"+name+" has been created successfully!\n The staff ID :"+newId);
                         new AssignSupervisorView(hrStaff, newId);
                     } else {
                         JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.OPERATION_FAILED);
@@ -103,6 +102,8 @@ public class CreateStaffView extends JFrame {
                 hrStaff.assignSupervisor(hrStaff.createStaff(RuntimeData.StaffBInfo.NAME,
                         RuntimeData.StaffBInfo.PASSWORD,
                         RuntimeData.StaffBInfo.SALARY), hrStaff.getId());
+                JOptionPane.showMessageDialog(CreateStaffView.this,CommonConstant.Messages.SUCCESS);
+                defaultBtn.setEnabled(false);
             }
         });
         centerPanel.add(defaultBtn);

@@ -1,9 +1,13 @@
 package model;
 
+import process.LaProcess;
+
+import java.util.List;
+
 /**
  * Created by liushanchen on 16/3/28.
  */
-public abstract class Personnel {
+public abstract class Personnel implements HandleRequest{
     private int id = -1;//is the personnel list index - 1.
     private String name;
     private double salary;
@@ -57,6 +61,7 @@ public abstract class Personnel {
         this.salary = salary;
     }
 
+
     public String getTitle() {
         return title;
     }
@@ -65,6 +70,10 @@ public abstract class Personnel {
         this.title = title;
     }
 
+    @Override
+    public List<LeavingApplication> getMyToBeHandleLa(){
+        return LaProcess.getLaProcess().getApplicationIShouldHandle(id);
+    }
     @Override
     public String toString() {
         return "Personnel{" +

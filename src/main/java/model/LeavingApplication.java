@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import utils.CommonUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +41,8 @@ public class LeavingApplication {
     }
 
     /**
-     *  this function should be invoked when supervisor handle the application and endorse it.
+     * this function should be invoked when supervisor handle the application and endorse it.
+     *
      * @param staff
      * @return true means the application is success, false means it needs further processing.
      */
@@ -104,19 +106,41 @@ public class LeavingApplication {
     @Override
     public String toString() {
         return "LeavingApplication{" +
-                "Aid=" + Aid +
-                ", applicantId=" + applicantId +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", note='" + note + '\'' +
-                ", approverId=" + approverId +
-                ", opponentId=" + opponentId +
-                ", status=" + status +
-                ", nextHandler=" + nextHandler +
+                "#" + Aid +
+                " | applicant:" + applicantId +
+                "\n | startDate:" + CommonUtils.dispDate(startDate) +
+                " | endDate:" + CommonUtils.dispDate(endDate) +
+                " | status:" + displayStatus(status) +
+                "\n | note :'" + note + '\'' +
+                "\n | approverId :" + approverId +
+                " | opponentId :" + opponentId +
+                " | nextHandler :" + nextHandler +
                 "}\n";
     }
 
-    public static class LAStr{
+    public String toDisplayStr() {
+        return "LeavingApplication{" +
+                "#" + Aid +
+                " | applicant:" + applicantId +
+                " | startDate:" + CommonUtils.dispDate(startDate) +
+                " | endDate:" + CommonUtils.dispDate(endDate) +
+                " | status:" + displayStatus(status) +
+                "}\n";
+    }
+
+    private String displayStatus(int s) {
+        switch (s) {
+            case 1:
+                return "SUCCESS";
+            case -1:
+                return "FAIL";
+            default:
+                return "PROCESSING";
+        }
+    }
+
+
+    public static class LAStr {
         public static final String AID = "LeavingApplication ID";
         public static final String APPLICANTID = "Applicant ID";
         public static final String STARTDATE = "Start Date";

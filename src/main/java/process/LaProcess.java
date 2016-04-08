@@ -133,11 +133,7 @@ public class LaProcess {
                 myApp.add(la);
             }
         }
-        if (myApp.size() > 0) {
-            return myApp;
-        } else {
-            return null;
-        }
+        return myApp;
     }
 
     /**
@@ -159,15 +155,17 @@ public class LaProcess {
             }
 
         }
-        if (myApp.size() > 0) {
             return myApp;
-        } else {
-            return null;
-        }
+
     }
+
     public String printInfo() {
         logger.info("laList:" + laList);
         return laList.toString();
+    }
+
+    public List<LeavingApplication> getAllApp() {
+        return laList;
     }
 
 }
