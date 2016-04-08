@@ -2,15 +2,10 @@ package view;
 
 import Data.CommonConstant;
 import model.Director;
-import model.HrStaff;
 import model.Personnel;
-import process.PersonnelProcess;
-import utils.CommonUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 /**

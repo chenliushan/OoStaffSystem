@@ -2,8 +2,6 @@ package process;
 
 import Data.CommonConstant;
 import Data.RuntimeData;
-import exception.DuplicatedException;
-import exception.IllegalOperationException;
 import model.Director;
 import model.HrStaff;
 import model.Personnel;
@@ -135,7 +133,6 @@ public class PersonnelProcess {
     }
 
     public String printInfo() {
-        logger.info("PERSONNEL_LIST:" + PERSONNEL_LIST);
         return PERSONNEL_LIST.toString();
     }
 

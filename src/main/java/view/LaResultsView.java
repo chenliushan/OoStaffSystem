@@ -6,7 +6,6 @@ import model.Personnel;
 import model.Staff;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import process.LaProcess;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +17,6 @@ import java.awt.event.ActionListener;
  * Created by liushanchen on 16/3/28.
  */
 public class LaResultsView extends JFrame {
-    private static Logger logger = LogManager.getLogger(LaResultsView.class.getName());
 
     private Staff personnel;
     private JFrame thisFrame;
@@ -28,13 +26,11 @@ public class LaResultsView extends JFrame {
 
     public LaResultsView(Personnel personnel) throws HeadlessException {
         super(CommonConstant.Messages.SHOW_ALL_LA);
-        if(personnel instanceof Staff){
+        if (personnel instanceof Staff) {
             this.personnel = (Staff) personnel;
             this.thisFrame = this;
             initView();
         }
-
-
     }
 
     private void initView() {
@@ -52,7 +48,7 @@ public class LaResultsView extends JFrame {
 
         jList = new JList();
         listModel = new DefaultListModel();
-        las =personnel.getMyApplicationResults();
+        las = personnel.getMyApplicationResults();
         for (LeavingApplication la : las) {
             listModel.addElement(la.toDisplayStr());
         }
@@ -66,7 +62,7 @@ public class LaResultsView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selected = jList.getSelectedIndex();
-                if(selected!=-1){
+                if (selected != -1) {
                     LeavingApplication la = las.get(selected);
                     JOptionPane.showMessageDialog(LaResultsView.this, la.toString());
                 }

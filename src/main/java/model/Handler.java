@@ -3,7 +3,6 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import process.PersonnelProcess;
-import utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +12,7 @@ import java.util.List;
  */
 
 /**
- * 这里要写清楚 chain of responsibility 会使用的方法: post,handle
- * 然后用一个abstract 把统一的post/handle实现了
- * 然后具体的class再实现独特的剩下那个方法
+ * chain of responsibility implementation
  */
 public abstract class Handler {
     private static Logger logger = LogManager.getLogger(Handler.class.getName());
@@ -24,7 +21,7 @@ public abstract class Handler {
     public static boolean DECLINE = false;
 
     private Handler supervisor = null;
-    private  List<LeavingApplication> shouldBeHandle = null;
+    private List<LeavingApplication> shouldBeHandle = null;
 
 
     public Handler(Handler supervisor) {
@@ -48,9 +45,9 @@ public abstract class Handler {
     }
 
     private void notifyApplicant(LeavingApplication la) {
-       Personnel applicant= PersonnelProcess.getInstance().searchById(la.getApplicantId());
-        if(applicant instanceof Staff){
-            Staff s=(Staff) applicant;
+        Personnel applicant = PersonnelProcess.getInstance().searchById(la.getApplicantId());
+        if (applicant instanceof Staff) {
+            Staff s = (Staff) applicant;
             s.receiveApplicationResult(la);
         }
     }
@@ -67,16 +64,6 @@ public abstract class Handler {
 
     public List<LeavingApplication> getAllShouldBeHandle() {
         return shouldBeHandle;
-    }
-
-    public LeavingApplication getOneShouldBeHandle(int index) {
-        return shouldBeHandle.get(index);
-    }
-
-    public void checkShouldBeHandle() {
-        for (LeavingApplication la : shouldBeHandle) {
-
-        }
     }
 
 

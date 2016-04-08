@@ -32,18 +32,18 @@ public class MenuView extends JFrame {
 
         JPanel centerPanel = new JPanel(new GridLayout(9, 3, 5, 10));
 
-        centerPanel.add(new JLabel(Personnel.PersonnelStr.ID+": "+personnel.getId(), SwingConstants.RIGHT));
+        centerPanel.add(new JLabel(Personnel.PersonnelStr.ID + ": " + personnel.getId(), SwingConstants.RIGHT));
         centerPanel.add(new JPanel());
         centerPanel.add(new JLabel(personnel.getTitle(), SwingConstants.LEFT));
 
 
         if (!personnel.getTitle().equals(CommonConstant.DIRECTOR_TITLE)) {
-           if( personnel.getSupervisor() !=null){
-               Personnel p=(Personnel)personnel.getSupervisor();
-               centerPanel.add(new JPanel());
-               centerPanel.add(new JLabel(Staff.StaffStr.SUPERVISOR+": "+p.getId(), SwingConstants.CENTER));
-               centerPanel.add(new JPanel());
-           }
+            if (personnel.getSupervisor() != null) {
+                Personnel p = (Personnel) personnel.getSupervisor();
+                centerPanel.add(new JPanel());
+                centerPanel.add(new JLabel(Staff.StaffStr.SUPERVISOR + ": " + p.getId(), SwingConstants.CENTER));
+                centerPanel.add(new JPanel());
+            }
 
 
             centerPanel.add(new JPanel());
@@ -91,15 +91,6 @@ public class MenuView extends JFrame {
             centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
-//            JButton showAllLa = new JButton(CommonConstant.Messages.SHOW_ALL_LA);
-//            showAllLa.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    new PrintAllLaView(personnel);
-//                }
-//            });
-//            centerPanel.add(showAllLa);
-//            centerPanel.add(new JPanel());
         }
 
         centerPanel.add(new JPanel());
@@ -112,7 +103,6 @@ public class MenuView extends JFrame {
         });
         centerPanel.add(handelBtn);
         centerPanel.add(new JPanel());
-
 
 
         if (personnel.getTitle().equals(CommonConstant.HR_TITLE)) {

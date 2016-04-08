@@ -1,26 +1,19 @@
 package view;
 
 import Data.CommonConstant;
-import model.Director;
 import model.LeavingApplication;
 import model.Personnel;
-import model.Staff;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import process.LaProcess;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
 
 /**
  * Created by liushanchen on 16/3/28.
  */
 public class LaToBeHandleView extends JFrame {
-    private static Logger logger = LogManager.getLogger(LaToBeHandleView.class.getName());
 
     private Personnel personnel;
     private JFrame thisFrame;

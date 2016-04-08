@@ -1,9 +1,4 @@
-import Data.RuntimeData;
-import model.LeavingApplication;
-import process.PersonnelProcess;
 import view.LoginView;
-
-import java.util.ArrayList;
 
 /**
  * Created by liushanchen on 16/3/28.

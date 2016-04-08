@@ -71,7 +71,7 @@ public class CreateStaffView extends JFrame {
                     supervisor = hrStaff.viewStaffInfo(id);
                     JOptionPane.showMessageDialog(CreateStaffView.this, supervisor);
 
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.STAFF_NOT_FOUND);
                 }
             }
@@ -122,10 +122,10 @@ public class CreateStaffView extends JFrame {
         defaultBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                hrStaff.createStaff(hrStaff,RuntimeData.StaffAInfo.NAME,
+                hrStaff.createStaff(hrStaff, RuntimeData.StaffAInfo.NAME,
                         RuntimeData.StaffAInfo.PASSWORD,
                         RuntimeData.StaffAInfo.SALARY);
-               hrStaff.createStaff(hrStaff,RuntimeData.StaffBInfo.NAME,
+                hrStaff.createStaff(hrStaff, RuntimeData.StaffBInfo.NAME,
                         RuntimeData.StaffBInfo.PASSWORD,
                         RuntimeData.StaffBInfo.SALARY);
                 JOptionPane.showMessageDialog(CreateStaffView.this, CommonConstant.Messages.SUCCESS);

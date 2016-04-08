@@ -1,9 +1,5 @@
 package model;
 
-import process.LaProcess;
-
-import java.util.List;
-
 /**
  * Created by liushanchen on 16/3/28.
  */
@@ -47,8 +43,6 @@ public abstract class Personnel extends Handler {
         this.salary = salary;
     }
 
-//    public abstract boolean HandleLeaveApplication(boolean decision);
-
     public String getPassword() {
         return password;
     }
@@ -71,10 +65,6 @@ public abstract class Personnel extends Handler {
     public void setTitle(String title) {
         this.title = title;
     }
-
-//    public List<LeavingApplication> getMyToBeHandleLa(){
-//        return LaProcess.getLaProcess().getApplicationIShouldHandle(id);
-//    }
     @Override
     public String toString() {
         return "Personnel{" +

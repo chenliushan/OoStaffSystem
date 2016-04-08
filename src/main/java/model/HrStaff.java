@@ -1,9 +1,6 @@
 package model;
 
 import Data.CommonConstant;
-import exception.DuplicatedException;
-import exception.IllegalOperationException;
-import exception.UninitializedException;
 import process.PersonnelProcess;
 
 /**

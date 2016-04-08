@@ -1,10 +1,8 @@
 package view;
 
 import Data.CommonConstant;
-import com.sun.net.httpserver.Authenticator;
 import model.LeavingApplication;
 import model.Personnel;
-import org.omg.PortableInterceptor.SUCCESSFUL;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +20,7 @@ public class LaHandleView extends JFrame {
 
     public LaHandleView(Personnel personnel, LeavingApplication la) {
         super(CommonConstant.Messages.HANDEL_LEAVING_APPLICATIONS);
-        thisFrame=this;
+        thisFrame = this;
         this.personnel = personnel;
         this.la = la;
         initView();

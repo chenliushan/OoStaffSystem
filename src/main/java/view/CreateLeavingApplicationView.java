@@ -1,7 +1,6 @@
 package view;
 
 import Data.CommonConstant;
-import model.HrStaff;
 import model.LeavingApplication;
 import model.Personnel;
 import model.Staff;
@@ -95,7 +94,7 @@ public class CreateLeavingApplicationView extends JFrame {
         todayBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Date d=new Date();
+                Date d = new Date();
                 nameTextField.setText(CommonUtils.dispDate(d));
                 passwordTextField.setText(CommonUtils.dispDate(d));
             }
