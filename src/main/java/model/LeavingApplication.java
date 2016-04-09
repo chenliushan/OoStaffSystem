@@ -95,7 +95,7 @@ public class LeavingApplication {
     @Override
     public String toString() {
         return "LeavingApplication{" +
-                "#" + Aid +
+//                "#" + Aid +
                 " | applicant:" + applicantId +
                 "\n | startDate:" + CommonUtils.dispDate(startDate) +
                 " | endDate:" + CommonUtils.dispDate(endDate) +
@@ -108,7 +108,7 @@ public class LeavingApplication {
 
     public String toDisplayStr() {
         return "LeavingApplication{" +
-                "#" + Aid +
+//                "#" + Aid +
                 " | applicant:" + applicantId +
                 " | startDate:" + CommonUtils.dispDate(startDate) +
                 " | endDate:" + CommonUtils.dispDate(endDate) +

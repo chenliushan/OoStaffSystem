@@ -18,14 +18,14 @@ public class RuntimeData {
     }
 
     public static class StaffAInfo {
-        public static String NAME = "AAAA";
-        public static String PASSWORD = "AAAA";
+        public static String NAME = "staff_A";
+        public static String PASSWORD = "aaaa";
         public static double SALARY = 100000;
     }
 
     public static class StaffBInfo {
-        public static String NAME = "BBBB";
-        public static String PASSWORD = "BBBB";
+        public static String NAME = "staff_b";
+        public static String PASSWORD = "bbbb";
         public static double SALARY = 100000;
     }
 }

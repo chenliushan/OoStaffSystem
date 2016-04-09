@@ -2,9 +2,7 @@ package view;
 
 import Data.CommonConstant;
 import model.Personnel;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import process.LoginProcess;
+import process.PersonnelProcess;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,9 +13,6 @@ import java.awt.event.ActionListener;
  * Created by liushanchen on 16/3/28.
  */
 public class LoginView extends Frame {
-    private static Logger logger = LogManager.getLogger(Personnel.class.getName());
-
-    private LoginProcess loginProcess;
 
     public LoginView() throws HeadlessException {
         super(CommonConstant.Messages.PROGRAM_NAME);
@@ -51,8 +46,8 @@ public class LoginView extends Frame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginProcess = new LoginProcess();
-                boolean personnel=loginProcess.check(usernameTextField.getText(), passwordTextField.getText());
+
+                boolean personnel = PersonnelProcess.getInstance().check(usernameTextField.getText(), passwordTextField.getText());
                 if (!personnel) {
                     JOptionPane.showMessageDialog(LoginView.this, CommonConstant.Messages.LOGIN_ERROR);
                 }
@@ -67,14 +62,14 @@ public class LoginView extends Frame {
         aPanel.add(centerPanel, BorderLayout.CENTER);
         this.add(aPanel);
         this.setVisible(true);
-        setupFocus(centerPanel);
+//        setupFocus(centerPanel);
     }
-    private void setupFocus( JPanel centerPanel) {
+
+    private void setupFocus(JPanel centerPanel) {
         centerPanel.setFocusTraversalPolicyProvider(true);
         centerPanel.setFocusTraversalPolicy(new ContainerOrderFocusTraversalPolicy() {
             @Override
-            protected boolean accept(Component aComponent)
-            {
+            protected boolean accept(Component aComponent) {
                 // Otherwise labels would get focused
                 return !(aComponent instanceof JLabel) && super.accept(aComponent);
             }

@@ -38,7 +38,7 @@ public class Staff extends Personnel {
         if (sd == null || ed == null) {
             return false;
         }
-        if (startDate != null && endDate != null) {
+        if (startDate != null && endDate != null && ed.after(sd)) {
             LeavingApplication la = new LeavingApplication(getId(), sd, ed, note);
             notifySupervisor(la);
             return true;

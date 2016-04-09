@@ -5,6 +5,8 @@ import Data.RuntimeData;
 import model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import utils.CommonUtils;
+import view.MenuView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,4 +151,23 @@ public class PersonnelProcess {
         return PERSONNEL_LIST.toString();
     }
 
+    /**
+     * since staffs can share the same name.
+     * Staff ID is used to login.
+     *
+     * @param staffId
+     * @param password
+     * @return
+     */
+    public boolean check(String staffId, String password) {
+        if (CommonUtils.isInteger(staffId)) {
+            int id = Integer.valueOf(staffId);
+            Personnel personnel =searchById(id);
+            if (personnel != null && personnel.getPassword().equals(password)) {
+                new MenuView(personnel);
+                return true;
+            }
+        }
+        return false;
+    }
 }
