@@ -3,18 +3,20 @@ This is a demo system for OO course
 It initialize with one director and one HR staff.
 They will be created automatically when this program is launch.
 *This system will not connect to the database.*
+**The .jar in this home dir can be executed directly**
 
-The default director is:
- NAME = "Jana";
+The default Personnel for login:
+director account is:
+ ID = 1;
  PASSWORD = "Jana";
- SALARY = 10000000;
  
-and HR is:
- NAME = "Jack";
+HR account is:
+ ID = 2;
  PASSWORD = "Jack";
- SALARY = 100000;
 
 ## Brief intro
+**The source code dir is: src/main/java**
+
 In this System, 
 Personnel is the parent of the Staff and Director
 HR extend Staff.
