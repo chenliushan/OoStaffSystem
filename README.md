@@ -28,14 +28,13 @@ And all of Handler can handle the LeavingApplication,
 while the handle methods are different among different types of personnel.
 
 ## Function list:
-[Login](#login)(Personnel)
-
-**Handle Leaving application request**(Personnel)
-**Apply a leave** (Staff)
-**View my application Results** (Staff)
-**Create new staff** (HrStaff)
-**Delete a staff** (HrStaff)
-**View all staff information** (Director)
+[**Login**](#login)(Personnel)
+[**Handle Leaving application request**](#handle-leaving-application-request)(Personnel)
+[**Apply a leave**](#apply-a-leave)(Staff)
+[**View my application Results**](#view-my-application-results)(Staff)
+[**Create new staff**](#create-new-staff)(HrStaff)
+[**Delete a staff**](#delete-a-staff)(HrStaff)
+[**View all staff information**](#view-all-staff-information)(Director)
 
 
 ## Function description:
