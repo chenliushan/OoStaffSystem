@@ -28,23 +28,23 @@ And all of Handler can handle the LeavingApplication,
 while the handle methods are different among different types of personnel.
 
 ## Function list:
-* [**Login**](#login)(Personnel)
-* [**Handle Leaving application request**](#handle-leaving-application-request)(Personnel)
-* [**Apply a leave**](#apply-a-leave)(Staff)
-* [**View my application Results**](#view-my-application-results)(Staff)
-* [**Create new staff**](#create-new-staff)(HrStaff)
-* [**Delete a staff**](#delete-a-staff)(HrStaff)
-* [**View all staff information**](#view-all-staff-information)(Director)
+* [**Login**](#login-personnel)(Personnel)
+* [**Handle Leaving application request**](#handle-leaving-application-request-personnel)(Personnel)
+* [**Apply a leave**](#apply-a-leave-staff)(Staff)
+* [**View my application Results**](#view-my-application-results-staff)(Staff)
+* [**Create new staff**](#create-new-staff-hrstaff)(HrStaff)
+* [**Delete a staff**](#delete-a-staff-hrstaff)(HrStaff)
+* [**View all staff information**](#view-all-staff-information-director)(Director)
 
 
 ## Function description:
 
-#### Login
+#### Login (Personnel)
 (Personnel)
 With the Personnel ID and password.
 At the first time of login, the system will create a singleton PersonnelProcess which maintain a list of *Personnel*.
 
-#### Handle Leaving application request(Personnel)
+#### Handle Leaving application request (Personnel)
 This function is defined and implemented in the abstract Handler 
 _Every Handler keeps a list of LeavingApplication that should be handle by he/she._
 There are two handle methods: **Endorse** and **Decline**
