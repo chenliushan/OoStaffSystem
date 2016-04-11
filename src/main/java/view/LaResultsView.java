@@ -25,7 +25,7 @@ public class LaResultsView extends JFrame {
     private java.util.List<LeavingApplication> las;
 
     public LaResultsView(Personnel personnel) throws HeadlessException {
-        super(CommonConstant.Messages.SHOW_ALL_LA);
+        super(CommonConstant.Messages.MY_REQUEST);
         if (personnel instanceof Staff) {
             this.personnel = (Staff) personnel;
             this.thisFrame = this;
@@ -39,7 +39,7 @@ public class LaResultsView extends JFrame {
         JPanel aPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel(CommonConstant.Messages.ALL_LA_IS));
+        topPanel.add(new JLabel(CommonConstant.Messages.LA_LIST_I_MADE));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
 

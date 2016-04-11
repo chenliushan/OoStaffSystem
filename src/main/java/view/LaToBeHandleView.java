@@ -22,7 +22,7 @@ public class LaToBeHandleView extends JFrame {
     private java.util.List<LeavingApplication> las;
 
     public LaToBeHandleView(Personnel personnel) throws HeadlessException {
-        super(CommonConstant.Messages.SHOW_ALL_LA);
+        super(CommonConstant.Messages.REQUEST_TO_BE_HANDLE);
         this.personnel = personnel;
         this.thisFrame = this;
         initView();
@@ -35,7 +35,7 @@ public class LaToBeHandleView extends JFrame {
         JPanel aPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel(CommonConstant.Messages.ALL_LA_IS));
+        topPanel.add(new JLabel(CommonConstant.Messages.LA_LIST_TO_BE_HANDLE));
         aPanel.add(topPanel, BorderLayout.NORTH);
 
 
