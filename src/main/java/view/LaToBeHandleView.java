@@ -53,7 +53,7 @@ public class LaToBeHandleView extends JFrame {
         jList.setModel(listModel);
         jList.setSelectedIndex(0);
 
-        JButton handelBtn = new JButton(CommonConstant.Messages.HANDEL_REQUEST);
+        JButton handelBtn = new JButton(CommonConstant.Messages.Handle);
         handelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

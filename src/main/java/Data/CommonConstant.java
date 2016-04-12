@@ -44,6 +44,7 @@ public class CommonConstant {
         public static final String LA_LIST_I_MADE = "Here are the Leaving Applications I have made:";
         public static final String LA_LIST_TO_BE_HANDLE = "Here are the Leaving Applications I should handle:";
 
+        public static final String Handle = "Handle";
         public static final String HANDEL_REQUEST = "Application Notification";
         public static final String HANDEL_LEAVING_APPLICATIONS = "Handel Leaving Application";
         public static final String LEAVING_APPLICATIONS_DETAIL = "Leaving Application Detail:";
