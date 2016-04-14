@@ -159,15 +159,15 @@ public class PersonnelProcess {
      * @param password
      * @return
      */
-    public boolean check(String staffId, String password) {
+    public Personnel check(String staffId, String password) {
         if (CommonUtils.isInteger(staffId)) {
             int id = Integer.valueOf(staffId);
             Personnel personnel =searchById(id);
             if (personnel != null && personnel.getPassword().equals(password)) {
-                new MenuView(personnel);
-                return true;
+
+                return personnel;
             }
         }
-        return false;
+        return null;
     }
 }

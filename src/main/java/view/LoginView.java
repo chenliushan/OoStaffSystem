@@ -47,8 +47,10 @@ public class LoginView extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                boolean personnel = PersonnelProcess.getInstance().check(usernameTextField.getText(), passwordTextField.getText());
-                if (!personnel) {
+                Personnel p = PersonnelProcess.getInstance().check(usernameTextField.getText(), passwordTextField.getText());
+                if (p!=null) {
+                    new MenuView(p);
+                }else{
                     JOptionPane.showMessageDialog(LoginView.this, CommonConstant.Messages.LOGIN_ERROR);
                 }
             }
