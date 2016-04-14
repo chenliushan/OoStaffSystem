@@ -2,7 +2,7 @@ package view;
 
 import Data.CommonConstant;
 import model.Personnel;
-import process.PersonnelProcess;
+import model.PersonnelProcess;
 
 import javax.swing.*;
 import java.awt.*;

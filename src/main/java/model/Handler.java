@@ -2,7 +2,6 @@ package model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import process.PersonnelProcess;
 
 import java.util.ArrayList;
 import java.util.List;

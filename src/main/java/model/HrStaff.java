@@ -1,7 +1,6 @@
 package model;
 
 import Data.CommonConstant;
-import process.PersonnelProcess;
 
 /**
  * Created by liushanchen on 16/3/28.
