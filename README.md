@@ -1,5 +1,26 @@
 # OoStaffSystem
 This is a demo system for OO course 
+## Project requirement
+General Description: 
+
+Build a Leave Application system for a Human Resource department, in Java, with GUI. 
+The system shall have the following high level functions: 
+1)	New / Delete a Staff  
+2)	Assign a staff S as another staff T’s supervisor 
+3)	Only  one  staff  is  allowed  to  have  no  supervisor  (which  we  call  it  as  the ‘director’) 
+4)	A staff can supervise multiple staff but each staff has only one supervisor 
+5)	Any staff (except the director) can use the system to apply for a leave from a date X to a date Y 
+a)	Once a staff S has applied for a leave, her supervisor T shall see a notice and has the options to “endorse” or “decline”. 
+i)	If T endorses the leaves, the application shall pass to T’s supervisor for further endosement. Only if all the direct / indirect supervisor of A has endorsed, S will see a notice about the successful approval of her leave. 
+ii)	If anyone in the process declines the leave application, S should be notified right away and the leave application does not need to further pass up. 
+ 
+The  system  does  NOT  need  to  access  the  database.    So,  if  the  program  is restarted, your system shall go back to the initial system state.
+
+
+
+## Brief intro
+**The source code dir is: src/main/java**
+
 It initialize with one director and one HR staff.
 They will be created automatically when this program is launch.
 *This system will not connect to the database.*
@@ -15,9 +36,6 @@ director account is:
 HR account is:
  ID = 2;
  PASSWORD = "Jack";
-
-## Brief intro
-**The source code dir is: src/main/java**
 
 In this System, 
 **Personnel** is the parent of the **Staff** and **Director**.
