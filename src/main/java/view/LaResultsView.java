@@ -24,12 +24,18 @@ public class LaResultsView extends JFrame {
     private DefaultListModel listModel;
     private java.util.List<LeavingApplication> las;
 
-    public LaResultsView(Personnel personnel) throws HeadlessException {
+    public LaResultsView(Staff personnel) throws HeadlessException {
         super(CommonConstant.Messages.MY_REQUEST);
         if (personnel instanceof Staff) {
             this.personnel = (Staff) personnel;
             this.thisFrame = this;
             initView();
+        }else{
+            JOptionPane.showMessageDialog(
+                    LaResultsView.this,
+                    CommonConstant.Messages.WRONG_CHARACTER,
+                    CommonConstant.Messages.ERROR,
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

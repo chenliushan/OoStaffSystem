@@ -1,6 +1,8 @@
 package view;
 
 import Data.CommonConstant;
+import model.Director;
+import model.HrStaff;
 import model.Personnel;
 import model.Staff;
 
@@ -38,20 +40,18 @@ public class MenuView extends JFrame {
 
 
         if (!personnel.getTitle().equals(CommonConstant.DIRECTOR_TITLE)) {
-            if (personnel.getSupervisor() != null) {
-                Personnel p = (Personnel) personnel.getSupervisor();
-                centerPanel.add(new JPanel());
-                centerPanel.add(new JLabel(Staff.StaffStr.SUPERVISOR + ": " + p.getId(), SwingConstants.CENTER));
-                centerPanel.add(new JPanel());
-            }
-
+            Staff staff=(Staff) personnel;
+            centerPanel.add(new JPanel());
+            centerPanel.add(new JLabel(Staff.StaffStr.SUPERVISOR + ": " + personnel.getSupervisorName(), SwingConstants.CENTER));
+            centerPanel.add(new JPanel());
 
             centerPanel.add(new JPanel());
             JButton applyBtn = new JButton(CommonConstant.Messages.APPLY_FOR_A_LEAVE);
             applyBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new CreateLeavingApplicationView(personnel);
+
+                    new CreateLeavingApplicationView(staff);
                 }
             });
             centerPanel.add(applyBtn);
@@ -62,13 +62,14 @@ public class MenuView extends JFrame {
             resultBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new LaResultsView(personnel);
+                    new LaResultsView(staff);
                 }
             });
             centerPanel.add(resultBtn);
             centerPanel.add(new JPanel());
 
         } else {
+            Director director=(Director) personnel;
             centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
             centerPanel.add(new JPanel());
@@ -78,7 +79,7 @@ public class MenuView extends JFrame {
             showAll.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new PrintAllStaffView(personnel);
+                    new PrintAllStaffView(director);
                 }
             });
             centerPanel.add(showAll);
@@ -106,12 +107,14 @@ public class MenuView extends JFrame {
 
 
         if (personnel.getTitle().equals(CommonConstant.HR_TITLE)) {
+            HrStaff hrStaff=(HrStaff) personnel;
+
             centerPanel.add(new JPanel());
             JButton createBtn = new JButton(CommonConstant.Messages.CREATE_NEW_STAFF);
             createBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new CreateStaffView(personnel);
+                    new CreateStaffView(hrStaff);
                 }
             });
             centerPanel.add(createBtn);
@@ -122,7 +125,7 @@ public class MenuView extends JFrame {
             deleteBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new DeleteAStaffView(personnel);
+                    new DeleteAStaffView(hrStaff);
                 }
             });
             centerPanel.add(deleteBtn);

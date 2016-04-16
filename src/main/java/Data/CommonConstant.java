@@ -12,6 +12,8 @@ public class CommonConstant {
 
 
     public static class Messages {
+        public static final String ERROR = "Error";
+        public static final String WRONG_CHARACTER = "Wrong character";
 
 
         public static final String LOGIN_ERROR = "Wrong staff id or password!";

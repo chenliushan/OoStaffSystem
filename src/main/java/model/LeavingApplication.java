@@ -15,7 +15,6 @@ public class LeavingApplication {
     public static final int SUCCESS = 1;
     public static final int FAIL = -1;
 
-    private int Aid = -1;
     private int applicantId = -1;
     private Date startDate;
     private Date endDate;
@@ -24,15 +23,7 @@ public class LeavingApplication {
     private int opponentId = -1;
     private int status;
 
-    public LeavingApplication(int aid, int applicantId, Date startDate, Date endDate, String note) {
-        this.Aid = aid;
-        this.applicantId = applicantId;
-        this.endDate = endDate;
-        this.note = note;
-        this.startDate = startDate;
-        this.status = PROCESSING;
-        this.approverId = new ArrayList<Integer>();
-    }
+
 
     public LeavingApplication(int applicantId, Date startDate, Date endDate, String note) {
         this.applicantId = applicantId;
@@ -70,9 +61,6 @@ public class LeavingApplication {
         }
     }
 
-    public int getAid() {
-        return Aid;
-    }
 
     public int getApplicantId() {
         return applicantId;
@@ -129,7 +117,6 @@ public class LeavingApplication {
 
 
     public static class LAStr {
-        public static final String AID = "LeavingApplication ID";
         public static final String APPLICANTID = "Applicant ID";
         public static final String STARTDATE = "Start Date";
         public static final String ENDDATE = "End Date";

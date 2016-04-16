@@ -16,9 +16,9 @@ public class PrintAllStaffView extends JFrame {
     private Director director;
     private JFrame thisFrame;
 
-    public PrintAllStaffView(Personnel personnel) throws HeadlessException {
+    public PrintAllStaffView(Director personnel) throws HeadlessException {
         super(CommonConstant.Messages.SHOW_ALL_STAFF);
-        this.director = (Director) personnel;
+        this.director = personnel;
         this.thisFrame = this;
         initView();
 

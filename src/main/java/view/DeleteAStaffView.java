@@ -17,7 +17,7 @@ public class DeleteAStaffView extends JFrame {
     private HrStaff hrStaff;
     private JFrame thisFrame;
 
-    public DeleteAStaffView(Personnel personnel) throws HeadlessException {
+    public DeleteAStaffView(HrStaff personnel) throws HeadlessException {
         super(CommonConstant.Messages.DELETE_A_STAFF);
         this.hrStaff = (HrStaff) personnel;
         this.thisFrame = this;

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  * Created by liushanchen on 16/3/28.
  */
@@ -22,6 +24,35 @@ public abstract class Personnel extends Handler {
     public int getId() {
         return id;
     }
+
+    public void handleApplication(LeavingApplication la, boolean decision){
+        if(decision){
+            endorse(la);
+        }else{
+            decline(la);
+        }
+    }
+    public List<LeavingApplication> toBeHandleLa(){
+       return getAllShouldBeHandle();
+    }
+
+    public int getSupervisorId(){
+        if(this.getSupervisor()!=null && this.getSupervisor() instanceof Personnel){
+            Personnel p=(Personnel) this.getSupervisor();
+           return p.getId();
+        }else{
+            return -1;
+        }
+    }
+    public String getSupervisorName(){
+        if(this.getSupervisor()!=null && this.getSupervisor() instanceof Personnel){
+            Personnel p=(Personnel) this.getSupervisor();
+            return p.getName();
+        }else{
+            return "NA";
+        }
+    }
+
 
     public void setId(int id) {
         this.id = id;

@@ -44,7 +44,7 @@ public class LaToBeHandleView extends JFrame {
 
         jList = new JList();
         listModel = new DefaultListModel();
-        las =personnel.getAllShouldBeHandle();
+        las =personnel.toBeHandleLa();
         for (LeavingApplication la : las) {
             listModel.addElement(la.toDisplayStr());
         }

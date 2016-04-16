@@ -45,7 +45,8 @@ public class LaHandleView extends JFrame {
         showAll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                personnel.endorse(la);
+                personnel.handleApplication(la,true);
+//                personnel.endorse(la);
                 JOptionPane.showMessageDialog(LaHandleView.this, CommonConstant.Messages.SUCCESS);
                 thisFrame.dispose();
             }
@@ -56,7 +57,8 @@ public class LaHandleView extends JFrame {
         showAllLa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                personnel.decline(la);
+                personnel.handleApplication(la,false);
+//                personnel.decline(la);
                 JOptionPane.showMessageDialog(LaHandleView.this, CommonConstant.Messages.SUCCESS);
                 thisFrame.dispose();
             }

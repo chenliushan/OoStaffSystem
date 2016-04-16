@@ -49,25 +49,13 @@ public class Staff extends Personnel {
 
     @Override
     public String toString() {
-        if (getSupervisor() instanceof Personnel) {
-            Personnel p = (Personnel) getSupervisor();
-            return "Staff{" +
-                    "id=" + super.getId() +
-                    ", name='" + super.getName() + '\'' +
-                    ", salary=" + super.getSalary() +
-                    ", password='" + super.getPassword() + '\'' +
-                    ", title='" + super.getTitle() + '\'' +
-                    ", supervisor='" + p.getId() + '\'' +
-                    '}' + "\n";
-        }
         return "Staff{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 ", salary=" + super.getSalary() +
                 ", password='" + super.getPassword() + '\'' +
                 ", title='" + super.getTitle() + '\'' +
-
-                ", supervisor='" + super.getSupervisor() + '\'' +
+                ", supervisor='" + getSupervisorName() + '\'' +
                 '}' + "\n";
     }
 

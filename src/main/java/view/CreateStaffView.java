@@ -21,9 +21,10 @@ public class CreateStaffView extends JFrame {
     JFrame thisFrame;
     Personnel supervisor = null;
 
-    public CreateStaffView(Personnel personnel) throws HeadlessException {
+    public CreateStaffView(HrStaff personnel) throws HeadlessException {
+
         super(CommonConstant.Messages.CREATE_NEW_STAFF);
-        this.hrStaff = (HrStaff) personnel;
+        this.hrStaff = personnel;
         thisFrame = this;
         initView();
 

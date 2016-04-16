@@ -28,12 +28,20 @@ public abstract class Handler {
         shouldBeHandle = new ArrayList<LeavingApplication>();
     }
 
-    public void notifySupervisor(LeavingApplication la) {
+    private void notifyApplicant(LeavingApplication la) {
+        Personnel applicant = PersonnelProcess.getInstance().searchById(la.getApplicantId());
+        if (applicant instanceof Staff) {
+            Staff s = (Staff) applicant;
+            s.receiveApplicationResult(la);
+        }
+    }
+    protected void notifySupervisor(LeavingApplication la) {
         supervisor.shouldBeHandle.add(la);
     }
 
 
-    public void endorse(LeavingApplication la) {
+
+    protected void endorse(LeavingApplication la) {
         shouldBeHandle.remove(la);
         la.endorsed(this);
         if (supervisor != null) {
@@ -42,26 +50,21 @@ public abstract class Handler {
             notifyApplicant(la);
         }
     }
-
-    private void notifyApplicant(LeavingApplication la) {
-        Personnel applicant = PersonnelProcess.getInstance().searchById(la.getApplicantId());
-        if (applicant instanceof Staff) {
-            Staff s = (Staff) applicant;
-            s.receiveApplicationResult(la);
-        }
-    }
-
-    public void decline(LeavingApplication la) {
+    protected void decline(LeavingApplication la) {
         shouldBeHandle.remove(la);
         la.declined(this);
         notifyApplicant(la);
     }
 
-    public Handler getSupervisor() {
+
+
+
+
+    protected Handler getSupervisor() {
         return supervisor;
     }
 
-    public List<LeavingApplication> getAllShouldBeHandle() {
+    protected List<LeavingApplication> getAllShouldBeHandle() {
         return shouldBeHandle;
     }
 

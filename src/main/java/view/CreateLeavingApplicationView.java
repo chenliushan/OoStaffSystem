@@ -1,6 +1,7 @@
 package view;
 
 import Data.CommonConstant;
+import model.HrStaff;
 import model.LeavingApplication;
 import model.Personnel;
 import model.Staff;
@@ -19,9 +20,9 @@ public class CreateLeavingApplicationView extends JFrame {
     Staff staff;
     JFrame thisFrame;
 
-    public CreateLeavingApplicationView(Personnel personnel) throws HeadlessException {
+    public CreateLeavingApplicationView(Staff personnel) throws HeadlessException {
         super(CommonConstant.Messages.APPLY_FOR_A_LEAVE);
-        this.staff = (Staff) personnel;
+        this.staff =  personnel;
         thisFrame = this;
         initView();
 
